@@ -1,21 +1,74 @@
-<%= form_for(@animal) do |f| %>
-  <% if @animal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
-
-      <ul>
-      <% @animal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @animal, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :code, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :short_code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :short_code, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :litter, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :litter, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :animal_sex_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :animal_sex_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :animal_type_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :animal_type_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :animal_color_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :animal_color_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :animal_coat_type_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :animal_coat_type_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :animal_size_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :animal_size_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :animal_species_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :animal_species_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :animal_breed_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :animal_breed_id, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                animals_path, :class => 'btn' %>
   </div>
 <% end %>
