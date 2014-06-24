@@ -1,17 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Animal, :type => :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
   before :each do
     @animal = Animal.new
   end
   
   describe '#new' do
     it 'returns a Animal object' do
-      # setup
-      # exercise
-      # verify
-      # teardown
       @animal.should be_an_instance_of Animal
     end
   end
@@ -40,7 +35,14 @@ RSpec.describe Animal, :type => :model do
   describe '#litter' do
     it 'returns the correct litter' do
       @animal.litter='houston'
-      expect(@animal.litter='houston')
+      expect(@animal.litter).to eq 'houston'
+    end
+  end
+
+  describe '#animal_sex' do
+    it 'returns the correct animal sex' do
+      @animal.animal_sex_id=1
+      expect(@animal.animal_sex.name).to eq 'Female'
     end
   end
 end
