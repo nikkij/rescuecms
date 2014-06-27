@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-animals = Animal.create([{id:1,name:'Jasper'},{id:2,name:'Guinness'},{id:3,name:'Gizmo'}])
+animals = Animal.create([{name:'Jasper'},{name:'Guinness'},{name:'Gizmo'}])
 
 animal_sexes = AnimalSex.create([{ id:1,name:'Female'},{id:2,name:'Male'}])
 

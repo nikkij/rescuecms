@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :animals
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -8,8 +7,11 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root to: "home#index"
 
+  resources :animals, only: [:index,:show]
+
   namespace :admin do
     root to: "dashboard#index"
+    resources :animals
   end
 
   # Example of regular route:
