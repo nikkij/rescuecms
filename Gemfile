@@ -43,3 +43,7 @@ gem 'rspec-rails',   group: :development
 
 # For Heroku
 gem 'rails_12factor', group: :production
+
+# Image upload and storage
+gem 'carrierwave'
+gem 'cloudinary'
