@@ -1,9 +1,29 @@
 require 'rails_helper'
+require 'spec_helper'
+require 'carrierwave/test/matchers'
 
-RSpec.describe Animal, :type => :model do
+describe Animal do
+  include CarrierWave::Test::Matchers
+
   before :each do
-    @animal = Animal.new
+    @animal = FactoryGirl.create(:animal)
   end
+
+  it 'has a valid Factory' do
+    FactoryGirl.build(:animal).should be_valid
+  end
+
+  describe "relations" do
+    it {should belong_to(:animal_species)}
+    it {should belong_to(:animal_sex)}
+    it {should belong_to(:animal_type)}
+    it {should belong_to(:animal_color)}
+    it {should belong_to(:animal_coat_type)}
+    it {should belong_to(:animal_size)}
+    it {should belong_to(:animal_species)}
+    it {should belong_to(:animal_breed)}
+  end
+
   
   describe '#new' do
     it 'returns a Animal object' do
@@ -11,38 +31,10 @@ RSpec.describe Animal, :type => :model do
     end
   end
 
-  describe '#name' do
-    it 'returns the correct name' do
-      @animal.name='Charlie'
-      expect(@animal.name).to eq 'Charlie'
-    end
-  end
-
-  describe '#code' do
-    it 'returns the correct code' do
-      @animal.code='U2014001'
-      expect(@animal.code).to eq 'U2014001'
-    end
-  end
-
-  describe '#short_code' do
-    it 'returns the correct short code' do
-      @animal.code='1235'
-      expect(@animal.code).to eq '1235'
-    end
-  end
-
-  describe '#litter' do
-    it 'returns the correct litter' do
-      @animal.litter='houston'
-      expect(@animal.litter).to eq 'houston'
-    end
-  end
-
-  describe '#animal_sex' do
-    it 'returns the correct animal sex' do
-      @animal.animal_sex_id=1
-      expect(@animal.animal_sex.name).to eq 'Female'
+  describe '#picture' do
+    it 'returns the correct picture' do
+      expect(@animal.picture_url).to  match(/http:\/\/res.cloudinary.com\/hwtphffjr\/image\/upload.+/)
+      #@animal.picture_url.should eq("/home/vagrant/sheltercms-0.0.1/spec/support/animal/pictures/pip.jpg")
     end
   end
 end

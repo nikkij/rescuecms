@@ -29,6 +29,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'rspec-rails',   group: :development
 
+group :test do
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
