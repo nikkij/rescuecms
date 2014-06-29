@@ -24,8 +24,8 @@
   <tbody>
     <% @animals.each do |animal| %>
       <tr>
-        <td><%= link_to animal.id, admin_animal_path(animal) %></td>
-        <td><%= animal.name %></td>
+        <td><%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %></td>
+        <td><%= link_to animal.name, admin_animal_path(animal) %></td>
         <td><%= animal.code %></td>
         <td><%= animal.short_code %></td>
         <td><%= animal.litter %></td>

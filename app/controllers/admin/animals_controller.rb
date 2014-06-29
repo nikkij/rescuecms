@@ -69,7 +69,9 @@ class Admin::AnimalsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:name)
+      params.require(:animal).permit(:name,:picture_cache, :picture, :code, :short_code, :litter,
+              :animal_sex_id, :animal_type_id, :animal_color_id, :animal_coat_type_id, :animal_size_id,
+              :animal_species_id, :animal_breed_id)
     end
 
 end

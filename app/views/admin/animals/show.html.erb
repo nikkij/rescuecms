@@ -4,6 +4,8 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt>Picture</dt>
+  <dd><%= image_tag(@animal.picture_url(:standard), :alt => @animal.name) %></strong></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @animal.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>

@@ -12,7 +12,8 @@
       <% @animals.each do |animal| %>
         <li class="media">
           <a class="pull-left" href="#">
-            <img alt="A picture of <%= animal.name %>" src="http://placehold.it/150x150" />
+            <%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %>
+            <!--<img alt="A picture of <%= animal.name %>" src="http://placehold.it/150x150" />-->
           </a>
           <div class="media-body">
             <h4 class="media-heading"><%= animal.name %></h4>
