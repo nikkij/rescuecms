@@ -5,46 +5,33 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>&nbsp;</th>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:code) %></th>
-      <th><%= model_class.human_attribute_name(:short_code) %></th>
-      <th><%= model_class.human_attribute_name(:litter) %></th>
-      <th><%= model_class.human_attribute_name(:animal_sex_id) %></th>
-      <th><%= model_class.human_attribute_name(:animal_type_id) %></th>
-      <th><%= model_class.human_attribute_name(:animal_color_id) %></th>
-      <th><%= model_class.human_attribute_name(:animal_coat_type_id) %></th>
-      <th><%= model_class.human_attribute_name(:animal_size_id) %></th>
-      <th><%= model_class.human_attribute_name(:animal_species_id) %></th>
-      <th><%= model_class.human_attribute_name(:animal_breed_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Sex</th>
+      <th>Type</th>
+      <th>Color</th>
+      <th>Species</th>
+      <th>Created</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
     <% @animals.each do |animal| %>
       <tr>
         <td><%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %></td>
+        <td><%= animal.id %></td>
         <td><%= link_to animal.name, admin_animal_path(animal) %></td>
-        <td><%= animal.code %></td>
-        <td><%= animal.short_code %></td>
-        <td><%= animal.litter %></td>
-        <td><%= animal.animal_sex_id %></td>
-        <td><%= animal.animal_type_id %></td>
-        <td><%= animal.animal_color_id %></td>
-        <td><%= animal.animal_coat_type_id %></td>
-        <td><%= animal.animal_size_id %></td>
-        <td><%= animal.animal_species_id %></td>
-        <td><%= animal.animal_breed_id %></td>
+        <td><%= animal.code unless animal.code.blank? %></td>
+        <td><%= animal.sex unless animal.sex.blank? %></td>
+        <td><%= animal.type unless animal.type.blank? %></td>
+        <td><%= animal.color unless animal.color.blank? %></td>
+        <td><%= animal.species unless animal.species.blank? %></td>
         <td><%=l animal.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_admin_animal_path(animal), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      admin_animal_path(animal),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>
