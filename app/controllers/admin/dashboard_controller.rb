@@ -12,6 +12,7 @@ class Admin::DashboardController < AdminController
 
   def index
     @current_user = User.new
+    @animals = Animal.all
   end
 
 end
