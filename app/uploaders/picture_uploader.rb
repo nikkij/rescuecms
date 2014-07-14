@@ -15,6 +15,10 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [200, 300, :north]
   end
 
+  version :gallery do
+    process :resize_to_fill => [700, 450]
+  end  
+
   version :card do
     process :resize_to_fit => [210, 210]
   end

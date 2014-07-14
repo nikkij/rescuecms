@@ -1,1 +1,157 @@
-<h2>Heart Animal Rescue</h2>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src='http://placehold.it/1900x750&text=Slide One'/>
+                <div class="carousel-caption">
+                    <h1>Be Someone's Hero</h1>
+                </div>
+            </div>
+            <div class="item">
+                <img src='http://placehold.it/1900x750&text=Slide Two'/>
+                <div class="carousel-caption">
+                    <h1>See Our Pet of the Week</h1>
+                </div>
+            </div>
+            <div class="item">
+                <img src='http://placehold.it/1900x750&text=Slide Three'/>
+                <div class="carousel-caption">
+                    <h1>Your Donations Make a Difference</h1>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- /.carousel -->
+
+    <div class="section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <h3><i class="fa fa-check-circle"></i> Adopt</h3>
+                    <p>Find your new best friend! When you adopt an animal you save a life and gain a forever friend. You can find out more about how to adopt one of our animals, or meet some of our adoptables.<a href="http://getbootstrap.com">Adopt today!</a></p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h3><i class="fa fa-pencil"></i> Donate</h3>
+                    <p>Help Heart Rescue save lives. Heart Rescue is a non-profit organizations. We depend on the donations of kind and generous people who love animals. People like you! <a href="#">Donate today</a>!</p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h3><i class="fa fa-folder-open"></i> Volunteer</h3>
+                    <p>We depend on the community to keep our organization running. Your involvement is key to our success. There are lots of ways you can help and help us fullfill our mission to save lives.</p>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.section -->
+
+    <div class="section-colored text-center">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Our Mission: Save them all</h2>
+                    <p>We believe in saving the lives of animals. You can join us in making the difference in the world of an animal today.</p>
+                    <hr>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.section-colored -->
+
+    <div class="section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Adoptables</h2>
+                    <hr>
+                </div>
+                <!-- BEGIN List of adobtables -->
+                <% @animals.each do |animal| %>
+                  <div class="col-lg-4 col-md-4 col-sm-6">
+                  	<a href="<%= animal_path(animal) %>">
+                      <%= image_tag(animal.picture_url(:gallery), :alt => animal.name, :class =>"img-responsive img-home-portfolio") %>
+                    </a>
+                  </div>
+                <% end %>
+                <!--<div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450">
+                    </a>
+                </div>-->
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450">
+                    </a>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.section -->
+
+
+        <!--<div class="section-colored">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h2>Modern Business Features Include:</h2>
+                    <ul>
+                        <li>Bootstrap 3 Framework</li>
+                        <li>Mobile Responsive Design</li>
+                        <li>Predefined File Paths</li>
+                        <li>Working PHP Contact Page</li>
+                        <li>Minimal Custom CSS Styles</li>
+                        <li>Unstyled: Add Your Own Style and Content!</li>
+                        <li>Font-Awesome fonts come pre-installed!</li>
+                        <li>100% <strong>Free</strong> to Use</li>
+                        <li>Open Source: Use for any project, private or commercial!</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <img class="img-responsive" src="http://placehold.it/700x450/ffffff/cccccc">
+                </div>
+            </div>-->
+            <!-- /.row -->
+
+        <!--</div>-->
+        <!-- /.container -->
+
+    </div>
+    <!-- /.section-colored -->
