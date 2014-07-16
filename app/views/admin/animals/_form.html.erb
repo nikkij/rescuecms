@@ -29,45 +29,45 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :animal_sex_id, :class => 'control-label' %>
+    <%= f.label :animal_sex_id, 'Sex', :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :animal_sex_id, :class => 'text_field' %>
+      <%= collection_select :animal, :animal_sex_id, AnimalSex.all, :id, :name %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :animal_type_id, :class => 'control-label' %>
+    <%= f.label :animal_type_id, 'Type', :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :animal_type_id, :class => 'text_field' %>
+      <%= collection_select :animal, :animal_type_id, AnimalType.all, :id, :name %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :animal_color_id, :class => 'control-label' %>
+    <%= f.label :animal_color_id, 'Color', :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :animal_color_id, :class => 'text_field' %>
+      <%= collection_select :animal, :animal_color_id, AnimalColor.all, :id, :name %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :animal_coat_type_id, :class => 'control-label' %>
+    <%= f.label :animal_coat_type_id, 'Coat Type', :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :animal_coat_type_id, :class => 'text_field' %>
+      <%= collection_select :animal, :animal_coat_type_id, AnimalCoatType.all, :id, :name %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :animal_size_id, :class => 'control-label' %>
+    <%= f.label :animal_size_id, 'Size', :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :animal_size_id, :class => 'text_field' %>
+      <%= collection_select :animal, :animal_size_id, AnimalSize.all, :id, :name %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :animal_species_id, :class => 'control-label' %>
+    <%= f.label :animal_species_id, 'Species', :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :animal_species_id, :class => 'text_field' %>
+      <%= collection_select :animal, :animal_species_id, AnimalSpecies.all, :id, :name %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :animal_breed_id, :class => 'control-label' %>
+    <%= f.label :animal_breed_id, 'Breed', :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :animal_breed_id, :class => 'text_field' %>
+      <%= collection_select :animal, :animal_breed_id, AnimalBreed.all, :id, :name %>
     </div>
   </div>
 

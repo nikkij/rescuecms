@@ -1,4 +1,8 @@
 <%- model_class = Animal -%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
@@ -11,7 +15,6 @@
       <th><%= model_class.human_attribute_name(:code) %></th>
       <th>Sex</th>
       <th>Type</th>
-      <th>Color</th>
       <th>Species</th>
       <th>Created</th>
       <th>&nbsp;</th>
@@ -26,7 +29,6 @@
         <td><%= animal.code unless animal.code.blank? %></td>
         <td><%= animal.sex unless animal.sex.blank? %></td>
         <td><%= animal.type unless animal.type.blank? %></td>
-        <td><%= animal.color unless animal.color.blank? %></td>
         <td><%= animal.species unless animal.species.blank? %></td>
         <td><%=l animal.created_at %></td>
         <td>
@@ -41,3 +43,7 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_admin_animal_path,
             :class => 'btn btn-primary' %>
+
+    </div>
+  </div>
+</div>
