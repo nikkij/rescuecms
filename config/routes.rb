@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :locations
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,10 +10,14 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :animals, only: [:index,:show]
+  resources :locations, only: [:show]
 
   namespace :admin do
     root to: "dashboard#index"
     resources :animals
+    resources :locations
+    resources :residence_locations, :controller => :locations
+    resources :on_premises_locations, :controller => :locations
   end
 
   # Example of regular route:

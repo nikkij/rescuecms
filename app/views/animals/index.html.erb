@@ -21,6 +21,7 @@
                 <strong>Sex:</strong><%= animal.animal_sex.name if animal.animal_sex %>
                 <strong>Size:</strong><%= animal.animal_size.name if animal.animal_size %>
                 <strong>Breed:</strong><%= animal.animal_breed.name if animal.animal_breed %>
+                <strong>Location:</strong><%= animal.location.name if animal.location %>
             </p>
             <a href="<%= animal_path(animal) %>">Find out more about <%= animal.name %></a>
           </div>

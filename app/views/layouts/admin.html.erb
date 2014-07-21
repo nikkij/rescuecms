@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rescue CMS Admin Demo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
   <%= csrf_meta_tags %>
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -14,7 +14,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-  <body class="skin-blue">
+<body class="skin-blue">
 <!-- REQUIRED LIBS FOR ADMINLTE. LOADED BY ASSET PIPELINE 
 morris.css
 dashboard/jvectormap/jquery-jvectormap-1.2.2.css
@@ -84,6 +84,11 @@ dashboard/AdminLTE.css
                 <li>
                     <a href="/admin/animals">
                         <i class="fa fa-paw"></i> <span>Animals</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/locations">
+                        <i class="fa fa-map-marker"></i> <span>Locations</span>
                     </a>
                 </li>
                 <!--<li class="treeview">
@@ -182,6 +187,7 @@ dashboard/AdminLTE.css
 
     </aside><!-- /.right-side -->
   </div><!-- ./wrapper -->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <!-- JS NEEDED FOR ADMIN LTE 
 library/raphael-min.js", "data-turbolinks-track" => true %>
 dashboard/plugins/morris/morris.min.js

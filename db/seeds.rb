@@ -5,8 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-animals = Animal.create([{name:'Jasper'},{name:'Guinness'},{name:'Gizmo'}])
-
 animal_sexes = AnimalSex.create([{ id:1,name:'Female'},{id:2,name:'Male'}])
 
 animal_types = AnimalType.create([
@@ -487,4 +485,13 @@ animal_breeds = AnimalBreed.create([
 	{id:360,animal_species_id:7,name:'Wirehaired Pointing Griffin'},
 	{id:361,animal_species_id:7,name:'Yorkshire Terrier'},
 	{id:362,animal_species_id:7,name:'Yugoslavian Mountain Do'}
-])	
+])
+
+residence_locations = ResidenceLocation.create([{id:1}])
+on_premises_locations = OnPremisesLocation.create([{id:2}])
+
+
+animals = Animal.create([
+	{name:'Jasper',location_id:1},
+	{name:'Guinness',location_id:1},
+	{name:'Gizmo',location_id:2}])

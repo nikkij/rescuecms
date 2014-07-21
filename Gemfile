@@ -46,6 +46,9 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# For MTI
+gem 'acts_as_relation'
+
 # For Heroku
 gem 'rails_12factor', group: :production
 

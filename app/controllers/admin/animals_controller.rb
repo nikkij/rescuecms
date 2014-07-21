@@ -25,6 +25,14 @@ class Admin::AnimalsController < AdminController
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
+    #Stub until specific location are implemented agianst the interface in next iteration
+    if params[:location][:as_location_type] == 'residence_location'
+      @animal.location_id = 1
+    elsif params[:location][:as_location_type] == 'on_premises_location'
+      @animal.location_id = 2
+    else
+      raise "Unknown location"
+    end
 
     respond_to do |format|
       if @animal.save

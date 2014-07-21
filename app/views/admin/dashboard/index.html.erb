@@ -64,8 +64,8 @@
                                 <table class="table table-striped">
                                     <tr>
                                         <th>Name</th>
-                                        <!--<th>Location</th>
-                                        <th>Status</th>
+                                        <th>Location</th>
+                                        <!--<th>Status</th>
                                         <th>Alerts</th>-->
                                     </tr>
                                     <% @animals.each do |animal| %>
@@ -75,8 +75,8 @@
                                             <%= animal.name %>
                                           </a>
                                         </td>
-                                        <!--<td>Location</td>
-                                        <td>Status</td>
+                                        <td><%= animal.location.name if animal.location %></td>
+                                        <!--<td>Status</td>
                                         <td>Alert</td>-->
                                     </tr>
                                     <% end %>

@@ -1,0 +1,8 @@
+<%= fields_for :location, @location do |ff| %>  
+  <div class="field">
+    <%= ff.radio_button :as_location_type, "residence_location" %>
+    <%= ff.label :location_type_residence, "Residence" %>
+    <%= ff.radio_button :as_location_type, "on_premises_location" %>
+    <%= ff.label :location_type_on_premises, "On Premises" %>   
+  </div>
+<% end %>

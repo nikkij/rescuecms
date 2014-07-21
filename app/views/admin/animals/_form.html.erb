@@ -23,6 +23,14 @@
     </div>
   </div>
   <div class="control-group">
+    <label>Location</label>
+    <% if @animal.location then @location = @animal.location %> 
+      Location: <%= @animal.location.as_location_type %> <%= @animal.location.id %>
+    <% else @location = Location.new %>
+      <%= render :partial => '/admin/locations/fields', object: @location %>
+    <% end %>
+  </div>
+  <div class="control-group">
     <%= f.label :litter, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :litter, :class => 'text_field' %>

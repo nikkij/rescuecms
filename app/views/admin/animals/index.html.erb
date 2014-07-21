@@ -14,9 +14,10 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:code) %></th>
       <th>Sex</th>
-      <th>Type</th>
       <th>Species</th>
+      <th>Location</th>
       <th>Created</th>
+      <th>&nbsp;</th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -28,12 +29,21 @@
         <td><%= link_to animal.name, admin_animal_path(animal) %></td>
         <td><%= animal.code unless animal.code.blank? %></td>
         <td><%= animal.sex unless animal.sex.blank? %></td>
-        <td><%= animal.type unless animal.type.blank? %></td>
         <td><%= animal.species unless animal.species.blank? %></td>
+        <td>
+          <% if animal.location %>
+            <%= link_to animal.location.name, "/admin/#{animal.location.as_location_type.underscore.pluralize}/#{animal.location.as_location_id.to_s}" %>
+          <% else %>
+            Unknown
+          <% end %>
+        </td>
         <td><%=l animal.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_admin_animal_path(animal), :class => 'btn btn-mini' %>
+        </td>
+        <td>
+          <%= link_to 'Move', '/locations/move/'+animal.id.to_s, :class => 'btn btn-mini' %>
         </td>
       </tr>
     <% end %>
