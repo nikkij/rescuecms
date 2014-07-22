@@ -5,6 +5,10 @@ class ResidenceLocation < ActiveRecord::Base
   acts_as :location
 
   def name
+    "Residence"
+  end
+
+  def description
     "Residence Location"
   end
 

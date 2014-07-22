@@ -14,7 +14,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "dashboard#index"
-    resources :animals
+    resources :animals do
+      member do
+        get :move
+        put :update_location
+        patch :update_location
+      end
+
+    end
     resources :locations
     resources :residence_locations, :controller => :locations
     resources :on_premises_locations, :controller => :locations

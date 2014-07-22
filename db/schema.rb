@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 20140719001523) do
   add_index "locations", ["as_location_id", "as_location_type"], name: "locations_as_location_index", using: :btree
 
   create_table "on_premises_locations", force: true do |t|
+    t.string "area"
+    t.string "unit"
   end
 
   create_table "organizational_locations", force: true do |t|

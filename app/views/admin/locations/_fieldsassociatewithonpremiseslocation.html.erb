@@ -1,0 +1,8 @@
+<%= fields_for :on_premises_location, @onpremiseslocation do |oplf| %>  
+  <div class="control-group">
+    <%= oplf.label :on_premises_location_area, 'Area', :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select :on_premises_location, :id, OnPremisesLocation.all, :id, :description %>
+    </div>
+  </div>
+<% end %>

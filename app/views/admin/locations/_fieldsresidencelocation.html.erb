@@ -5,4 +5,15 @@
     <%= ff.radio_button :as_location_type, "on_premises_location", :class=>'location_type_radio' %>
     <%= ff.label :location_type_on_premises, "On Premises" %>   
   </div>
+  <!-- Location Details -->
+  <div id="residence_location_fields" style="display:none;">
+    <h2>Residence</h2>
+  </div>
+  <div id="on_premises_location_fields" style="display:none;">
+    <h2>On Premises</h2>
+    <%= ff.label :area, :class => 'control-label' %>
+    <div class="controls">
+      <%= ff.text_field :area, :class => 'text_field' %>
+    </div>
+  </div>
 <% end %>

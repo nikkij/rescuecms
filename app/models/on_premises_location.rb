@@ -1,11 +1,16 @@
 class OnPremisesLocation < ActiveRecord::Base
-  #has_one :locator, :as => :location
-  #has_one :animal, :through => :locators
 
   acts_as :location
 
+  validates :area, presence: true
+  
+
   def name
     "On Presmises"
+  end
+
+  def description
+    self.area.to_s + ":" + self.unit.to_s
   end
 
 end

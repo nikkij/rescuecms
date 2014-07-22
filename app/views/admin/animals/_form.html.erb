@@ -28,6 +28,15 @@
       Location: <%= @animal.location.as_location_type %> <%= @animal.location.id %>
     <% else @location = Location.new %>
       <%= render :partial => '/admin/locations/fields', object: @location %>
+      <!-- Location Details -->
+     <div id="residence_location_fields" style="display:none;">
+       <h2>Residence</h2>
+     </div>
+     <div id="on_premises_location_fields" style="display:none;">
+       <h2>On Premises</h2>
+       <% @onpremiseslocation = OnPremisesLocation.new %>
+       <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
+      </div>
     <% end %>
   </div>
   <div class="control-group">

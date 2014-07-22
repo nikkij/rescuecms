@@ -1,0 +1,11 @@
+<%= fields_for :on_premises_location, @onpremiseslocation do |oplf| %>  
+    <%= oplf.label :area, :class => 'control-label' %>
+    <div class="controls">
+      <%= oplf.text_field :area, :class => 'text_field' %>
+    </div>
+    <%= oplf.label :unit, :class => 'control-label' %>
+    <div class="controls">
+      <%= oplf.text_field :unit, :class => 'text_field' %>
+    </div>
+<% end %>
+

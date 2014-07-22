@@ -12,6 +12,7 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
+      <th>Description</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -21,6 +22,7 @@
       <tr>
         <td><%= location.id %></td>
         <td><%= link_to location.name, "/admin/#{location.as_location_type.underscore.pluralize}/#{location.as_location_id.to_s}" %></td>
+        <td><%= location.description %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       '/admin/'+ location.as_location_type.underscore.pluralize + '/' + location.as_location_id.to_s + '/edit', :class => 'btn btn-mini' %>

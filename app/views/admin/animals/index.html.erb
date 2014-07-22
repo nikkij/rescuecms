@@ -43,7 +43,7 @@
                       edit_admin_animal_path(animal), :class => 'btn btn-mini' %>
         </td>
         <td>
-          <%= link_to 'Move', '/locations/move/'+animal.id.to_s, :class => 'btn btn-mini' %>
+          <%= link_to 'Move', move_admin_animal_path(animal), method: :get, :class => 'btn btn-mini' %>
         </td>
       </tr>
     <% end %>

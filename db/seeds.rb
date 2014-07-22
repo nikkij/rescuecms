@@ -488,7 +488,22 @@ animal_breeds = AnimalBreed.create([
 ])
 
 residence_locations = ResidenceLocation.create([{id:1}])
-on_premises_locations = OnPremisesLocation.create([{id:2}])
+on_premises_locations = OnPremisesLocation.create([
+	{area:'Dog Healthy Holding',unit:'1'},
+	{area:'Dog Healthy Holding',unit:'2'},
+	{area:'Dog Healthy Holding',unit:'3'},
+	{area:'Dog Healthy Holding',unit:'4'},
+	{area:'Dog Healthy Holding',unit:'5'},
+	{area:'Dog Healthy Holding',unit:'6'},
+	{area:'Dog Healthy Holding',unit:'7'},
+	{area:'Dog Healthy Holding',unit:'8'},
+	{area:'Dog Healthy Holding',unit:'9'},
+	{area:'Dog Healthy Holding',unit:'10'},
+	{area:'Cat Healthy Holding',unit:'1'},
+	{area:'Cat Healthy Holding',unit:'2'},
+	{area:'Cat Healthy Holding',unit:'3'},
+	{area:'Dog Quarentine',unit:'1'},
+	{area:'Cat Quarentine',unit:'2'}])
 
 
 animals = Animal.create([

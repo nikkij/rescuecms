@@ -31,7 +31,9 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   # POST /locations.json
   def create
     #@location = Location.new(location_params)
-    @location = params[:location][:as_location_type].classify.constantize.new(location_params)
+    location_type = params[:location][:as_location_type]
+    strong_params_method_to_call = location_type+'_params'
+    @location = location_type.classify.constantize.new(self.send(strong_params_method_to_call.to_sym))
     respond_to do |format|
       if @location.save
         format.html { redirect_to [:admin,Location.new], notice: 'Location was successfully created.' }
@@ -81,7 +83,13 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name,:location_type)
+      #params.require(:location).permit(:name,:as_location_type,:area,:unit)
+      #params.require(:on_premises_location).permit!
+      params.require(:location).permit(:name,:as_location_type)
+    end
+
+    def on_premises_location_params
+      params.require(:on_premises_location).permit(:area,:unit)
     end
 
 end

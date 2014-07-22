@@ -6,7 +6,9 @@ class CreateLocations < ActiveRecord::Migration
     create_table :residence_locations do |t|      
     end
 
-    create_table :on_premises_locations do |t|     
+    create_table :on_premises_locations do |t|
+      t.string :area     
+      t.string :unit
     end
 
     create_table :organizational_locations do |t|

@@ -1,5 +1,5 @@
 class Admin::AnimalsController < AdminController
-  before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  before_action :set_animal, only: [:show, :move, :update_location, :edit, :update, :destroy]
 
   # GET /animals
   # GET /animals.json
@@ -26,10 +26,18 @@ class Admin::AnimalsController < AdminController
   def create
     @animal = Animal.new(animal_params)
     #Stub until specific location are implemented agianst the interface in next iteration
-    if params[:location][:as_location_type] == 'residence_location'
-      @animal.location_id = 1
-    elsif params[:location][:as_location_type] == 'on_premises_location'
-      @animal.location_id = 2
+    #if params[:location][:as_location_type] == 'residence_location'
+    #  @animal.location_id = 1
+    #elsif params[:location][:as_location_type] == 'on_premises_location'
+    #  @animal.location_id = params[:location][:location_id]
+    #else
+    #  raise "Unknown location"
+    #end
+    if  params[:location][:as_location_type] then
+      location_type = params[:location][:as_location_type]
+      strong_params_method_to_call = location_type+'_params'
+      #self.send(strong_params_method_to_call.to_sym)
+      @animal.location = location_type.classify.constantize.find(14).location
     else
       raise "Unknown location"
     end
@@ -59,6 +67,27 @@ class Admin::AnimalsController < AdminController
     end
   end
 
+  # GET /animals/1/move
+  def move
+    @location = @animal.location
+  end
+
+  # PATCH/PUT /animals/1
+  # PATCH/PUT /animals/1.json
+  def update_location
+    respond_to do |format|
+      location_type = params[:location][:as_location_type]
+      @location = location_type.classify.constantize.find(params[location_type][:id]).location
+      if @animal.update_attributes(:location=>@location)
+        format.html { redirect_to [:admin, @animal], notice: 'Animal was successfully moved.' }
+        format.json { render :show, status: :ok, location: @animal }
+      else
+        format.html { render :edit }
+        format.json { render json: @animal.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /animals/1
   # DELETE /animals/1.json
   def destroy
@@ -80,6 +109,10 @@ class Admin::AnimalsController < AdminController
       params.require(:animal).permit(:name,:picture_cache, :picture, :code, :short_code, :litter,
               :animal_sex_id, :animal_type_id, :animal_color_id, :animal_coat_type_id, :animal_size_id,
               :animal_species_id, :animal_breed_id)
+    end
+
+    def on_premises_location_params
+      params.require(:on_premises_location).permit(:area,:unit)
     end
 
 end
