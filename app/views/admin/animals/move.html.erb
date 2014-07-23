@@ -1,24 +1,29 @@
-<%= form_for @animal, :url => {:action => 'update_location'}, :html => { :class => 'form-horizontal' } do |f| %>
-
-  <h3>From</h3>
-  <h4>Current Location</h4>
-
-  <h3>To</h3>
-  <h4>New Location</h4>
-  <%= render :partial => '/admin/locations/fields', object: @location %>
-  <!-- Location Details -->
-  <div id="residence_location_fields" style="display:none;">
-    <h2>Residence</h2>
-  </div>
-  <div id="on_premises_location_fields" style="display:none;">
-    <h2>On Premises</h2>
-    <% @onpremiseslocation = OnPremisesLocation.new %>
-    <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                admin_animals_path, :class => 'btn' %>
+<div class="col-lg-12 col-md-12">
+  <div class="page-header">
+    <h4>Move <%= @animal.name %></h4>
   </div>  
-<% end %>
+
+  <%= form_for @animal, :url => {:action => 'update_location'}, :html => { :class => 'form-horizontal' } do |f| %>  
+
+    <h5>From <small>Current Location</small></h5>
+    <p><% @animal.location.description %></p>  
+
+    <h5>To <small>New Location</small></h5>
+    <%= render :partial => '/admin/locations/fields', object: @location %>
+    <!-- Location Details -->
+    <div id="residence_location_fields" style="display:none;">
+      <h2>Residence</h2>
+    </div>
+    <div id="on_premises_location_fields" style="display:none;">
+      <h2>On Premises</h2>
+      <% @onpremiseslocation = OnPremisesLocation.new %>
+      <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
+    </div>  
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  admin_animals_path, :class => 'btn' %>
+    </div>  
+  <% end %>
+</div>

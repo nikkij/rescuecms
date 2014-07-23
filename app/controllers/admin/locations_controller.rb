@@ -30,7 +30,6 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   # POST /locations
   # POST /locations.json
   def create
-    #@location = Location.new(location_params)
     location_type = params[:location][:as_location_type]
     strong_params_method_to_call = location_type+'_params'
     @location = location_type.classify.constantize.new(self.send(strong_params_method_to_call.to_sym))

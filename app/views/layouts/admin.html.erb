@@ -174,7 +174,7 @@ dashboard/AdminLTE.css
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
+                <%= controller.controller_name.titleize %>
                 <small>Control panel</small>
             </h1>
             <ol class="breadcrumb">
@@ -183,7 +183,16 @@ dashboard/AdminLTE.css
             </ol>
         </section>
 
-    <%= yield %>
+        <div class="section">
+          <div class="container">
+            <div class="row">
+
+            <%= yield %>
+            
+            </div>
+          </div>
+        </div>
+
 
     </aside><!-- /.right-side -->
   </div><!-- ./wrapper -->

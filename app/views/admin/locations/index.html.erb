@@ -1,11 +1,9 @@
 <%- model_class = Location -%>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
+<div class="col-lg-12 col-md-12">
+  <div class="page-header">
+    All Locations
+  </div>  
 
 <table class="table table-striped">
   <thead>
@@ -38,6 +36,4 @@
             new_admin_location_path,
             :class => 'btn btn-primary' %>
 
-      </div>
-    </div>
-  </div>
+</div>

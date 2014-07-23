@@ -1,59 +1,58 @@
 <%- model_class = Animal -%>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>&nbsp;</th>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:code) %></th>
-      <th>Sex</th>
-      <th>Species</th>
-      <th>Location</th>
-      <th>Created</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @animals.each do |animal| %>
+<div class="col-lg-12 col-md-12">
+ 
+  <div class="page-header">
+    All Animals
+  </div>  
+
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %></td>
-        <td><%= animal.id %></td>
-        <td><%= link_to animal.name, admin_animal_path(animal) %></td>
-        <td><%= animal.code unless animal.code.blank? %></td>
-        <td><%= animal.sex unless animal.sex.blank? %></td>
-        <td><%= animal.species unless animal.species.blank? %></td>
-        <td>
-          <% if animal.location %>
-            <%= link_to animal.location.name, "/admin/#{animal.location.as_location_type.underscore.pluralize}/#{animal.location.as_location_id.to_s}" %>
-          <% else %>
-            Unknown
-          <% end %>
-        </td>
-        <td><%=l animal.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_admin_animal_path(animal), :class => 'btn btn-mini' %>
-        </td>
-        <td>
-          <%= link_to 'Move', move_admin_animal_path(animal), method: :get, :class => 'btn btn-mini' %>
-        </td>
+        <th>&nbsp;</th>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:name) %></th>
+        <th><%= model_class.human_attribute_name(:code) %></th>
+        <th>Sex</th>
+        <th>Species</th>
+        <th>Location</th>
+        <th>Created</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @animals.each do |animal| %>
+        <tr>
+          <td><%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %></td>
+          <td><%= animal.id %></td>
+          <td><%= link_to animal.name, admin_animal_path(animal) %></td>
+          <td><%= animal.code unless animal.code.blank? %></td>
+          <td><%= animal.sex unless animal.sex.blank? %></td>
+          <td><%= animal.species unless animal.species.blank? %></td>
+          <td>
+            <% if animal.location %>
+              <%= link_to animal.location.name, "/admin/#{animal.location.as_location_type.underscore.pluralize}/#{animal.location.as_location_id.to_s}" %>
+            <% else %>
+              Unknown
+            <% end %>
+          </td>
+          <td><%=l animal.created_at %></td>
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_admin_animal_path(animal), :class => 'btn btn-mini' %>
+          </td>
+          <td>
+            <%= link_to 'Move', move_admin_animal_path(animal), method: :get, :class => 'btn btn-mini' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_admin_animal_path,
-            :class => 'btn btn-primary' %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_admin_animal_path,
+              :class => 'btn btn-primary' %>
 
-    </div>
-  </div>
+
 </div>

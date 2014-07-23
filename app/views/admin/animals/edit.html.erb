@@ -1,12 +1,9 @@
 <%- model_class = Animal -%>
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12">
-        <div class="page-header">
-        <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
-        </div>
-        <%= render :partial => 'form' %>
-      </div>
-    </div>
+<div class="col-lg-12 col-md-12">
+  <div class="page-header">
+    <h3>Edit <%= @animal.name %></h3>
+  </div>  
+
+  <%= render :partial => 'form' %>
+
 </div>
