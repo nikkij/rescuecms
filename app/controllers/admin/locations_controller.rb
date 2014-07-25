@@ -19,6 +19,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   # GET /locations/new
   def new
     @location = Location.new
+    @address = Address.new #this is only needed for residence locations though, surely there is a better way to do this?
   end
 
   # GET /locations/1/edit
@@ -47,8 +48,10 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
+    location_type = params[:location][:as_location_type]
+    strong_params_method_to_call = location_type+'_params'  
     respond_to do |format|
-      if @location.update(location_params)
+      if @location.update(self.send(strong_params_method_to_call.to_sym))
         format.html { redirect_to [:admin,@location], notice: 'Location was successfully updated.' }
         format.json { render :show, status: :ok, location: @location }
       else
@@ -89,6 +92,10 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
 
     def on_premises_location_params
       params.require(:on_premises_location).permit(:area,:unit)
+    end
+
+    def residence_location_params
+      params.require(:residence_location).permit(:address_attributes => [:street,:city,:state_id,:zip_code,:id])
     end
 
 end

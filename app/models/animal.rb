@@ -13,7 +13,7 @@ class Animal < ActiveRecord::Base
   delegate :sex, :to => :animal_sex, :allow_nil => true
   delegate :type, :to => :animal_type, :allow_nil => true
   delegate :color, :to => :animal_color, :allow_nil => true
-  delegate :coat, :to => :animal_coat_type, :allow_nil => true
+  delegate :coat_type, :to => :animal_coat_type, :allow_nil => true
   delegate :size, :to => :animal_size, :allow_nil => true
   delegate :species, :to => :animal_species, :allow_nil => true
   delegate :breed, :to => :animal_breed, :allow_nil => true

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :locations
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -20,10 +18,16 @@ Rails.application.routes.draw do
         put :update_location
         patch :update_location
       end
-
     end
+    
+    resources :addresses do
+      collection do
+        get 'autocomplete'
+      end
+    end
+
     resources :locations
-    resources :residence_locations, :controller => :locations
+    resources :residence_locations, :controller => :locations, :has_one => [:address]
     resources :on_premises_locations, :controller => :locations
   end
 

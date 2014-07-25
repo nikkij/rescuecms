@@ -15,11 +15,13 @@
   <!-- Location Details -->
   <div id="residence_location_fields" style="display:none;">
     <h2>Residence</h2>
+    <% @residencelocation = ResidenceLocation.new %>
+    <%= render :partial => '/admin/locations/fieldsresidencelocation', object: @residencelocation, :locals => {:f => f} %>
   </div>
   <div id="on_premises_location_fields" style="display:none;">
     <h2>On Premises</h2>
     <% @onpremiseslocation = OnPremisesLocation.new %>
-    <%= render :partial => '/admin/locations/fieldsonpremiseslocation', object: @onpremiseslocation %>
+    <%= render :partial => '/admin/locations/fieldsonpremiseslocation', object: @onpremiseslocation, :locals => {:f => f} %>
   </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

@@ -37,7 +37,7 @@ class Admin::AnimalsController < AdminController
       location_type = params[:location][:as_location_type]
       strong_params_method_to_call = location_type+'_params'
       #self.send(strong_params_method_to_call.to_sym)
-      @animal.location = location_type.classify.constantize.find(14).location
+      @animal.location = location_type.classify.constantize.find(params[location_type][:id]).location
     else
       raise "Unknown location"
     end

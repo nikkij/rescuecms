@@ -19,19 +19,19 @@
     <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
     <dd><%= @animal.location.name %>,<%= @animal.location.description %></dd>
     <dt><strong><%= model_class.human_attribute_name(:sex) %>:</strong></dt>
-    <dd><%= @animal.sex.name if @animal.sex %></dd>
+    <dd><%= @animal.sex if @animal.sex %></dd>
     <dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
-    <dd><%= @animal.type.name if @animal.type %></dd>
+    <dd><%= @animal.type if @animal.type %></dd>
     <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
-    <dd><%= @animal.color.name if @animal.color %></dd>
+    <dd><%= @animal.color if @animal.color %></dd>
     <dt><strong><%= model_class.human_attribute_name(:coat_type) %>:</strong></dt>
-    <dd><%= @animal.coat.name if @animal.coat %></dd>
+    <dd><%= @animal.coat_type if @animal.coat_type %></dd>
     <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
-    <dd><%= @animal.size.name if @animal.size %></dd>
+    <dd><%= @animal.size if @animal.size %></dd>
     <dt><strong><%= model_class.human_attribute_name(:species) %>:</strong></dt>
-    <dd><%= @animal.species.name if @animal.species %></dd>
+    <dd><%= @animal.species if @animal.species %></dd>
     <dt><strong><%= model_class.human_attribute_name(:breed) %>:</strong></dt>
-    <dd><%= @animal.breed.name if @animal.breed %></dd>
+    <dd><%= @animal.breed if @animal.breed %></dd>
   </dl>  
 
   <div class="form-actions">

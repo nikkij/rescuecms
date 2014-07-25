@@ -1,6 +1,7 @@
 class ResidenceLocation < ActiveRecord::Base
-  #has_one :locator, :as => :location
-  #has_one :animal, :through => :locators
+  has_one :address, :as => :addressable
+
+  accepts_nested_attributes_for :address
 
   acts_as :location
 
@@ -9,7 +10,11 @@ class ResidenceLocation < ActiveRecord::Base
   end
 
   def description
-    "Residence Location"
+    if self.address then
+      self.address.street
+    else
+      "No Address"
+    end
   end
 
 end

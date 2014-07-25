@@ -2,4 +2,9 @@
   <div class="page-header">
     <h3><%= @location.description %></h3>
   </div> 
+  <address>
+    <%= @location.address.street if @location.address %><br/>
+    <%= @location.address.city if @location.address %>, <%= @location.address.state.abbreviation if @location.address %><br/>
+    <%= @location.address.zip_code %>
+  </address>
 </div>

@@ -1,0 +1,10 @@
+ <%= f.fields_for :address, @address do |ff| %>
+   <%= ff.label :street %>
+   <%= ff.text_field :street %>
+   <%= ff.label :city %>
+   <%= ff.text_field :city %>
+   <%= ff.label :state %>
+   <%= ff.collection_select :state_id, State.all, :id, :name %>
+   <%= ff.label :zip_code %>
+   <%= ff.text_field :zip_code %>
+ <% end %>

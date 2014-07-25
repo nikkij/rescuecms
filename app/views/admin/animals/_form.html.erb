@@ -25,18 +25,19 @@
   <div class="control-group">
     <label>Location</label>
     <% if @animal.location then @location = @animal.location %> 
-      Location: <%= @animal.location.as_location_type %> <%= @animal.location.id %>
+      <%= @animal.location.as_location_type %> <%= @animal.location.description %><br>
+      Need to move this animal? <a href="" class='btn btn-primary'>Move</a>
     <% else @location = Location.new %>
       <%= render :partial => '/admin/locations/fields', object: @location %>
       <!-- Location Details -->
-     <div id="residence_location_fields" style="display:none;">
-       <h2>Residence</h2>
-     </div>
-     <div id="on_premises_location_fields" style="display:none;">
-       <h2>On Premises</h2>
-       <% @onpremiseslocation = OnPremisesLocation.new %>
-       <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
+      <div id="residence_location_fields" style="display:none;">
+        <% @residencelocation = ResidenceLocation.new %>
+        <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
       </div>
+      <div id="on_premises_location_fields" style="display:none;">
+        <% @onpremiseslocation = OnPremisesLocation.new %>
+        <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
+       </div>
     <% end %>
   </div>
   <div class="control-group">

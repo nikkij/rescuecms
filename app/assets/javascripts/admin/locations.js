@@ -1,7 +1,6 @@
 // Locations
 
 // Toggle detail fields on select radio location type
-//alert('radio?'+$(".location_type_radio").attr('id'));
 // Should be able to rewrite this in a more generic manner for resuse when time permits. 
 $('.location_type_radio').on('ifChecked', function(event) {
     //var ele = $(this).parents("li").first();
@@ -24,4 +23,14 @@ $('.location_type_radio').on('ifChecked', function(event) {
       	$('#'+ele+'_fields').hide();
       }
     });
+});
+
+// Autocomplete for addresses
+$( "#query_residence_location" ).autocomplete({
+  source: '/admin/addresses/autocomplete.json',
+  select: function(event,ui) {
+    event.preventDefault();
+    $(this).val(ui.item.label);
+    $('#residence_location_id').val(ui.item.value);
+  }
 });
