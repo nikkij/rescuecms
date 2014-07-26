@@ -685,7 +685,7 @@ on_premises_locations = OnPremisesLocation.create([
 animals = Animal.create([
 	{name:'Jasper',location_id:1},
 	{name:'Guinness',location_id:1},
-	{name:'Gizmo',location_id:2,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1403932823/dwg9kpfduoltqcm1ni3w.jpg'},
+	{name:'Gizmo',animal_sex_id:1,animal_type_id:1,location_id:2,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1403932823/dwg9kpfduoltqcm1ni3w.jpg'},
 	{name:'Jesse',location_id:15,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1406096720/cp8wdzfoluodl087dg9a.jpg'},
 	{name:'Pip',location_id:3,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1403918766/nybuvyrogb64kaaffeuh.jpg'},
     {name:'Dakota',location_id:4,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/c_thumb,g_face,h_100,w_150/v1406106211/bosjx0zaqytt9w6kd0mq.jpg'}

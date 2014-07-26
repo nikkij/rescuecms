@@ -175,25 +175,24 @@ dashboard/AdminLTE.css
         <section class="content-header">
             <h1>
                 <%= controller.controller_name.titleize %>
-                <small>Control panel</small>
+                <small><%= action_name.titleize %></small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">Dashboard</li>
             </ol>
         </section>
-
         <div class="section">
           <div class="container">
             <div class="row">
-
-            <%= yield %>
-            
+              <!-- MAIN CONTENT -->
+              <section class="content">
+                <%= yield %>
+              </section>
+              <!-- END MAIN CONTENT -->
             </div>
           </div>
         </div>
-
-
     </aside><!-- /.right-side -->
   </div><!-- ./wrapper -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

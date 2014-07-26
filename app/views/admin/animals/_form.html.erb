@@ -1,97 +1,132 @@
-<%= form_for [:admin, @animal], :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :picture, :class => 'control-label' %>
-    <%= f.hidden_field(:picture_cache) %>
-    <%= f.file_field(:picture) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">Animal Information</h3>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :code, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :code, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :short_code, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :short_code, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <label>Location</label>
-    <% if @animal.location then @location = @animal.location %> 
-      <%= @animal.location.as_location_type %> <%= @animal.location.description %><br>
-      Need to move this animal? <a href="" class='btn btn-primary'>Move</a>
-    <% else @location = Location.new %>
-      <%= render :partial => '/admin/locations/fields', object: @location %>
-      <!-- Location Details -->
-      <div id="residence_location_fields" style="display:none;">
-        <% @residencelocation = ResidenceLocation.new %>
-        <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
+    <%= form_for [:admin, @animal], :html => { :role => 'form' } do |f| %>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+           <div class="media-body">                      
+               <%= f.label :picture %>
+               <%= f.hidden_field(:picture_cache) %>
+               <%= f.file_field(:picture) %>
+           </div>        
+        </div>
+        <div class="col-md-6">
+          &nbsp;
+        </div>
       </div>
-      <div id="on_premises_location_fields" style="display:none;">
-        <% @onpremiseslocation = OnPremisesLocation.new %>
-        <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
-       </div>
-    <% end %>
-  </div>
-  <div class="control-group">
-    <%= f.label :litter, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :litter, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :animal_sex_id, 'Sex', :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select :animal, :animal_sex_id, AnimalSex.all, :id, :name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :animal_type_id, 'Type', :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select :animal, :animal_type_id, AnimalType.all, :id, :name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :animal_color_id, 'Color', :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select :animal, :animal_color_id, AnimalColor.all, :id, :name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :animal_coat_type_id, 'Coat Type', :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select :animal, :animal_coat_type_id, AnimalCoatType.all, :id, :name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :animal_size_id, 'Size', :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select :animal, :animal_size_id, AnimalSize.all, :id, :name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :animal_species_id, 'Species', :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select :animal, :animal_species_id, AnimalSpecies.all, :id, :name %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :animal_breed_id, 'Breed', :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select :animal, :animal_breed_id, AnimalBreed.all, :id, :name %>
-    </div>
-  </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                admin_animals_path, :class => 'btn' %>
-  </div>
-<% end %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :code %>
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.text_field :code, :class => 'form-control' %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.text_field :short_code, :class => 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :litter %>
+            <%= f.text_field :litter, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :animal_type_id, 'Type' %>
+            <%= collection_select :animal, :animal_type_id, AnimalType.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :animal_sex_id, 'Sex' %>
+              <%= collection_select :animal, :animal_sex_id, AnimalSex.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'}%>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :animal_size_id, 'Size' %>
+              <%= collection_select :animal, :animal_size_id, AnimalSize.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-xs-6">
+                <%= f.label :animal_color_id, 'Color' %>
+                <%= collection_select :animal, :animal_color_id, AnimalColor.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
+            </div>
+            <div class="col-xs-6">              
+                <%= f.label :animal_coat_type_id, 'Coat Type' %>
+                <%= collection_select :animal, :animal_coat_type_id, AnimalCoatType.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <%= f.label :animal_species_id, 'Species'%>
+                <%= collection_select :animal, :animal_species_id, AnimalSpecies.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <%= f.label :animal_breed_id, 'Breed' %>
+                <%= collection_select :animal, :animal_breed_id, AnimalBreed.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
+              </div>     
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <% if @animal.location then @location = @animal.location %>
+
+            <% else @location = Location.new %>
+              <%= render :partial => '/admin/locations/fields', object: @location %>
+              <!-- Location Details -->
+              <div id="residence_location_fields" style="display:none;">
+                <% @residencelocation = ResidenceLocation.new %>
+                <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
+              </div>
+              <div id="on_premises_location_fields" style="display:none;">
+                <% @onpremiseslocation = OnPremisesLocation.new %>
+                <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
+               </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  admin_animals_path, :class => 'btn' %>
+    </div>
+  <% end %>
+</div> <!-- END BOX BODY -->

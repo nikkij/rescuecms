@@ -1,18 +1,15 @@
-<div class="col-lg-12 col-md-12">
-  <div class="page-header">
-    <h4>Move <%= @animal.name %></h4>
-  </div>  
-
   <%= form_for @animal, :url => {:action => 'update_location'}, :html => { :class => 'form-horizontal' } do |f| %>  
-
+<div class="col-lg-6 col-md-6"> 
     <h5>From <small>Current Location</small></h5>
-    <p><% @animal.location.description %></p>  
-
+    <p><%= @animal.location.description %></p>  
+</div>
+<div class="col-lg-6 col-md-6"> 
     <h5>To <small>New Location</small></h5>
-    <%= render :partial => '/admin/locations/fields', object: @location %>
+    <%= render :partial => '/admin/locations/fields', object: @animal.location %>
     <!-- Location Details -->
     <div id="residence_location_fields" style="display:none;">
-      <h2>Residence</h2>
+        <% @residencelocation = ResidenceLocation.new %>
+        <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
     </div>
     <div id="on_premises_location_fields" style="display:none;">
       <h2>On Premises</h2>
@@ -20,10 +17,11 @@
       <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
     </div>  
 
+</div>
+
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   admin_animals_path, :class => 'btn' %>
     </div>  
   <% end %>
-</div>
