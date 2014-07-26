@@ -4,7 +4,6 @@ class OnPremisesLocation < ActiveRecord::Base
 
   validates :area, presence: true
   
-
   def name
     "On Presmises"
   end

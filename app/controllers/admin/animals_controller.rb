@@ -1,11 +1,13 @@
 class Admin::AnimalsController < AdminController
   before_action :set_animal, only: [:show, :move, :update_location, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /animals
   # GET /animals.json
   def index
     #@animals = Animal.all
-    @animals = Animal.paginate(:page => params[:page], :per_page => 10)
+    @animals = Animal.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10)
+    #@animals = Animal.order(params[:sort]).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /animals/1
@@ -115,5 +117,13 @@ class Admin::AnimalsController < AdminController
     def on_premises_location_params
       params.require(:on_premises_location).permit(:area,:unit)
     end
+
+    def sort_column  
+      params[:sort] || "name"  
+    end  
+    
+    def sort_direction  
+      params[:direction] || "asc"  
+    end 
 
 end

@@ -19,4 +19,14 @@ class Animal < ActiveRecord::Base
   delegate :breed, :to => :animal_breed, :allow_nil => true
 
   mount_uploader :picture, PictureUploader
+
+  def self.search(search)
+    if search
+      where('name ILIKE ?', "%#{search}%")
+    else
+      where(nil)
+    end
+  end
+
+
 end
