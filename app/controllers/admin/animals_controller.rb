@@ -4,7 +4,8 @@ class Admin::AnimalsController < AdminController
   # GET /animals
   # GET /animals.json
   def index
-    @animals = Animal.all
+    #@animals = Animal.all
+    @animals = Animal.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /animals/1

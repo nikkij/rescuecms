@@ -6,7 +6,8 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    #@locations = Location.all
+    @locations = Location.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /locations/1

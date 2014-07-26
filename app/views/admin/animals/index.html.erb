@@ -3,7 +3,9 @@
 <div class="col-lg-12 col-md-12">
  
   <div class="page-header">
-    All Animals
+    All Animals |   <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_admin_animal_path,
+              :class => 'btn btn-primary' %>
   </div>  
 
   <table class="table table-striped">
@@ -50,9 +52,6 @@
     </tbody>
   </table>  
 
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-              new_admin_animal_path,
-              :class => 'btn btn-primary' %>
-
+  <%= will_paginate @animals, renderer: BootstrapPagination::Rails %>
 
 </div>

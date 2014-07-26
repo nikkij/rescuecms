@@ -47,6 +47,10 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Pagination
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
 # For MTI
 gem 'acts_as_relation'
 
