@@ -20,6 +20,11 @@ class Animal < ActiveRecord::Base
   delegate :breed, :to => :animal_breed, :allow_nil => true
   delegate :status, :to => :animal_status
 
+  has_paper_trail
+
+  include PublicActivity::Model
+  tracked
+
   mount_uploader :picture, PictureUploader
 
   scope :adoptable, ->() {

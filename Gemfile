@@ -47,6 +47,13 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Authentication
+gem 'authlogic'
+
+# Auditng, Versioning, History
+gem 'paper_trail', '~> 3.0.3'
+
+
 # Pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

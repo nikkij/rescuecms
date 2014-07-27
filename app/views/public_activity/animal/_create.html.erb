@@ -1,0 +1,15 @@
+<div class="media" style="margin-bottom:5px;">
+  <a class="pull-left" href="#">
+    <%= image_tag(activity.trackable.picture_url(:tinythumbnail), :alt => activity.trackable.name) %>
+  </a>
+  <div class="media-body">
+  	<span><%= time_ago_in_words(activity.trackable.created_at) %> ago</span>
+    <h5 class="media-heading">
+      <% if activity.trackable %>
+        <%= link_to activity.trackable.name, activity.trackable %> was entered by
+      <% else %>
+        which has since been removed
+      <% end %>
+    </h5>
+  </div>
+</div>
