@@ -53,6 +53,8 @@ gem 'authlogic'
 # Auditng, Versioning, History
 gem 'paper_trail', '~> 3.0.3'
 
+#Activity stream
+gem 'public_activity'
 
 # Pagination
 gem 'will_paginate'
