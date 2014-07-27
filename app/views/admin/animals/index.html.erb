@@ -33,7 +33,8 @@
       <tr>
         <th>&nbsp;</th>
         <th><%= sortable 'name' %></th>
-        <th><%= model_class.human_attribute_name(:code) %></th>
+        <th>Code</th>
+        <th>Status</th>
         <th>Sex</th>
         <th>Species</th>
         <th>Location</th>
@@ -48,6 +49,7 @@
           <td><%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %></td>
           <td><%= link_to animal.name, admin_animal_path(animal) %></td>
           <td><%= animal.code unless animal.code.blank? %></td>
+          <td><%= animal.status unless animal.status.blank? %></td>
           <td><%= animal.sex unless animal.sex.blank? %></td>
           <td><%= animal.species unless animal.species.blank? %></td>
           <td>
@@ -57,7 +59,7 @@
               Unknown
             <% end %>
           </td>
-          <td><%=l animal.created_at %></td>
+          <td><%= time_ago_in_words(animal.created_at) %> ago</td>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_admin_animal_path(animal), :class => 'btn btn-mini' %>

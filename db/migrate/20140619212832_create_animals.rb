@@ -12,6 +12,7 @@ class CreateAnimals < ActiveRecord::Migration
       t.integer :animal_size_id
       t.integer :animal_species_id
       t.integer :animal_breed_id
+      t.integer :animal_status_id
       
       t.timestamps
     end

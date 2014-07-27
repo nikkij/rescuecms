@@ -27,16 +27,20 @@
     <h5>General Information</h5>
     <table class="table table-condensed">
       <tr>
+        <td><strong><%= model_class.human_attribute_name(:status) %></strong></td>
+        <td><%= @animal.status %></td>
+      </tr>
+      <tr>
         <td><strong><%= model_class.human_attribute_name(:code) %></strong></td>
         <td><%= @animal.code %>-<%= @animal.short_code %></td>
       </tr>
       <tr>
-        <td><strong><%= model_class.human_attribute_name(:sex) %></strong></td>
-        <td><%= @animal.sex if @animal.sex %></td>
-      </tr>
-      <tr>
         <td><strong><%= model_class.human_attribute_name(:type) %></strong></td>
         <td><%= @animal.type if @animal.type %></td>
+      </tr>
+      <tr>
+        <td><strong><%= model_class.human_attribute_name(:sex) %></strong></td>
+        <td><%= @animal.sex if @animal.sex %></td>
       </tr>
       <tr>
         <td><strong><%= model_class.human_attribute_name(:color) %></strong></td>

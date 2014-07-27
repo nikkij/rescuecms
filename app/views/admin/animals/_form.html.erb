@@ -30,6 +30,10 @@
           </div>
         </div>
         <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :animal_status_id, 'Status' %>
+            <%= collection_select :animal, :animal_status_id, AnimalStatus.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
+          </div>
         </div>
       </div>
 
