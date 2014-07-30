@@ -22,42 +22,15 @@ State.create([
   {name: "Illinois",abbreviation: "IL"},
   {name: "Indiana",abbreviation: "IN"},
   {name: "Iowa",abbreviation: "IA"},
-  {
-    name: "Kansas",
-    abbreviation: "KS"
-  },
-  {
-    name: "Kentucky",
-    abbreviation: "KY"
-  },
-  {
-    name: "Louisiana",
-    abbreviation: "LA"
-  },
-  {
-    name: "Maine",
-    abbreviation: "ME"
-  },
-  {
-    name: "Maryland",
-    abbreviation: "MD"
-  },
-  {
-    name: "Massachusetts",
-    abbreviation: "MA"
-  },
-  {
-    name: "Michigan",
-    abbreviation: "MI"
-  },
-  {
-    name: "Minnesota",
-    abbreviation: "MN"
-  },
-  {
-    name: "Mississippi",
-    abbreviation: "MS"
-  },
+  {name: "Kansas",abbreviation: "KS"},
+  {name: "Kentucky",abbreviation: "KY"},
+  {name: "Louisiana",abbreviation: "LA"},
+  {name: "Maine",abbreviation: "ME"},
+  {name: "Maryland",abbreviation: "MD"},
+  {name: "Massachusetts",abbreviation: "MA"},
+  {name: "Michigan",abbreviation: "MI"},
+  {name: "Minnesota",abbreviation: "MN"},
+  {name: "Mississippi",abbreviation: "MS"},
   {
     name: "Missouri",
     abbreviation: "MO"
@@ -282,7 +255,7 @@ animal_species = AnimalSpecies.create([
 ])
 
 animal_breeds = AnimalBreed.create([ 
-    {id:1,animal_species_id:7,name:'Affenpinscher'},
+  {id:1,animal_species_id:7,name:'Affenpinscher'},
 	{id:2,animal_species_id:7,name:'Afghan Hound'},
 	{id:3,animal_species_id:7,name:'Ainu Dog'},
 	{id:4,animal_species_id:7,name:'Airedale Terrier'},
@@ -678,8 +651,6 @@ on_premises_locations = OnPremisesLocation.create([
 	{area:'Dog Quarentine',unit:'1'},
 	{area:'Cat Quarentine',unit:'2'}])
 
-
-
 animals = Animal.create([
 	{name:'Jasper',location_id:1,animal_status_id:1},
 	{name:'Guinness',location_id:2,animal_status_id:3},
@@ -693,4 +664,8 @@ animals = Animal.create([
   {name:'Charlie',location_id:8,animal_status_id:2},
   {name:'Marshmellow',location_id:9,animal_status_id:2},
   {name:'Blue',location_id:10,animal_status_id:2}
+])
+
+users = User.create([
+  {email:'demo@demo.com',password:'demo',password_confirmation:'demo'}
 ])
