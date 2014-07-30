@@ -1,7 +1,6 @@
 class Admin::LocationsController < AdminController
-
-before_action :set_location, only: [:show, :edit, :update, :destroy]
-  #before_action :set_location
+  before_filter :require_login
+  before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   # GET /locations
   # GET /locations.json

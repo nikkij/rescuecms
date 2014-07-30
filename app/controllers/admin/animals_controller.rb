@@ -1,4 +1,5 @@
 class Admin::AnimalsController < AdminController
+  before_filter :require_login
   before_action :set_animal, only: [:show, :move, :update_location, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
@@ -28,14 +29,6 @@ class Admin::AnimalsController < AdminController
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
-    #Stub until specific location are implemented agianst the interface in next iteration
-    #if params[:location][:as_location_type] == 'residence_location'
-    #  @animal.location_id = 1
-    #elsif params[:location][:as_location_type] == 'on_premises_location'
-    #  @animal.location_id = params[:location][:location_id]
-    #else
-    #  raise "Unknown location"
-    #end
     if  params[:location][:as_location_type] then
       location_type = params[:location][:as_location_type]
       strong_params_method_to_call = location_type+'_params'

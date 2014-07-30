@@ -48,7 +48,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Authentication
-gem 'authlogic'
+gem 'sorcery'
 
 # Auditng, Versioning, History
 gem 'paper_trail', '~> 3.0.3'

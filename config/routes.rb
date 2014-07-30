@@ -29,6 +29,12 @@ Rails.application.routes.draw do
     resources :locations
     resources :residence_locations, :controller => :locations, :has_one => [:address]
     resources :on_premises_locations, :controller => :locations
+
+    resources :users
+    resources :sessions
+    post "logout" => "sessions#destroy", :as => "logout"
+    get "login" => "sessions#new", :as => "login"
+    get "signup" => "users#new", :as => "signup"
   end
 
   # Example of regular route:
