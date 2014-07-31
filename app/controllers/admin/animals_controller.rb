@@ -32,7 +32,6 @@ class Admin::AnimalsController < AdminController
     if  params[:location][:as_location_type] then
       location_type = params[:location][:as_location_type]
       strong_params_method_to_call = location_type+'_params'
-      #self.send(strong_params_method_to_call.to_sym)
       @animal.location = location_type.classify.constantize.find(params[location_type][:id]).location
     else
       raise "Unknown location"
@@ -40,6 +39,7 @@ class Admin::AnimalsController < AdminController
 
     respond_to do |format|
       if @animal.save
+        @animal.create_activity :create, owner: current_user
         format.html { redirect_to [:admin,@animal], notice: 'Animal was successfully created.' }
         format.json { render :show, status: :created, location: @animal }
       else

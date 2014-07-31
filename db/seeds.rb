@@ -669,3 +669,16 @@ animals = Animal.create([
 users = User.create([
   {email:'demo@demo.com',password:'demo',password_confirmation:'demo'}
 ])
+
+Animal.find(1).create_activity :create, owner: User.find(1)
+Animal.find(2).create_activity :create, owner: User.find(1)
+Animal.find(3).create_activity :create, owner: User.find(1)
+Animal.find(4).create_activity :create, owner: User.find(1)
+Animal.find(5).create_activity :create, owner: User.find(1)
+Animal.find(6).create_activity :create, owner: User.find(1)
+Animal.find(7).create_activity :create, owner: User.find(1)
+Animal.find(8).create_activity :create, owner: User.find(1)
+Animal.find(9).create_activity :create, owner: User.find(1)
+Animal.find(10).create_activity :create, owner: User.find(1)
+Animal.find(11).create_activity :create, owner: User.find(1)
+Animal.find(12).create_activity :create, owner: User.find(1)

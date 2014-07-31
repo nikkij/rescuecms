@@ -1,4 +1,6 @@
 class Animal < ActiveRecord::Base
+  include PublicActivity::Common
+
   belongs_to :animal_sex
   belongs_to :animal_type
   belongs_to :animal_color
@@ -21,9 +23,6 @@ class Animal < ActiveRecord::Base
   delegate :status, :to => :animal_status
 
   has_paper_trail
-
-  include PublicActivity::Model
-  tracked
 
   mount_uploader :picture, PictureUploader
 

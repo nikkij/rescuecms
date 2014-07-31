@@ -3,7 +3,7 @@
         
             <!-- Small boxes (Stat box) -->
             <div class="row">
-            	<% @animals.each do |animal| %>
+            	<% @animals.take(4).each do |animal| %>
             	<div class="col-lg-3 col-md-3 col-xs-6">
                     <!-- small box -->
                     <div class="small-box bg-gray">
@@ -45,7 +45,6 @@
                     <!-- Adoptables list box -->
                     <div class="box box-warning">
                         <div class="box-header">
-                        	<!-- ADD BACK IN AFTER STATUS AND LOCATION ARE IMPLEMENTED -->
                             <!-- tools box -->
                             <!--<div class="pull-right box-tools">
                             	<div class="btn-group">
@@ -58,7 +57,6 @@
                                     </ul>
                                 </div>
                             </div>--><!-- /. tools -->
-
                             <i class="fa fa-map-marker"></i>
                             <h3 class="box-title">
                                 Adoptables
@@ -71,10 +69,11 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Location</th>
-                                        <!--<th>Status</th>
-                                        <th>Alerts</th>-->
+                                        <th>Status</th>
+                                        <th colspan="2">Actions</th>
+                                        <!--<th>Alerts</th>-->
                                     </tr>
-                                    <% @animals.each do |animal| %>
+                                    <% @animals.take(5).each do |animal| %>
                                     <tr>
                                         <td>
                                           <a href="<%= admin_animal_path(animal) %>">
@@ -82,15 +81,17 @@
                                           </a>
                                         </td>
                                         <td><%= animal.location.name if animal.location %></td>
-                                        <!--<td>Status</td>
-                                        <td>Alert</td>-->
+                                        <td><%= animal.status if animal.status %></td>
+                                        <td><a href="<%= edit_admin_animal_path(animal) %>"><i class="fa fa-pencil"></i></td>
+                                        <td><a href="<%= move_admin_animal_path(animal) %>"><i class="fa fa-exchange"></i></a></td>
+                                        <!--<td>Alert</td>-->
                                     </tr>
                                     <% end %>
                                 </table><!-- /.table -->
                             </div>
                         </div><!-- /.box-body-->
-                        <div class="box-footer">
-                            <a href="<%= new_admin_animal_path %>" class="btn btn-default"><i class="fa fa-plus"></i> Add Animal</a>
+                        <div class="box-footer clearfix no-border">
+                          <a href="<%= new_admin_animal_path %>" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add Animal</a>
                         </div>
                     </div>
                     <!-- /.box -->
@@ -100,20 +101,6 @@
                     <!-- Activity Stream list box -->
                     <div class="box box-warning">
                         <div class="box-header">
-                            <!-- ADD BACK IN AFTER STATUS AND LOCATION ARE IMPLEMENTED -->
-                            <!-- tools box -->
-                            <!--<div class="pull-right box-tools">
-                                <div class="btn-group">
-                                    <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Fosters</a></li>
-                                        <li><a href="#">On Hold</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Custom Filter</a></li>
-                                    </ul>
-                                </div>
-                            </div>--><!-- /. tools -->
-
                             <i class="fa fa-bullhorn"></i>
                             <h3 class="box-title">
                                 Activity Stream
@@ -126,14 +113,11 @@
                                     <tr>
                                         <td>
                                           
-
-<% @activities.each do |activity| %>
-  <div class="activity">
-    <%= link_to activity.owner.name, activity.owner if activity.owner %>
-    <%= render_activity activity %>
-  </div>
-<% end %>
-
+                                        <% @activities.each do |activity| %>
+                                          <div class="activity">
+                                            <%= render_activity activity %>
+                                          </div>
+                                        <% end %>
 
                                         </td>
                                     </tr>
