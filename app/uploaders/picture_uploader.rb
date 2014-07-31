@@ -12,7 +12,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # storage :fog
 
   version :standard do
-    process :resize_to_fill => [200, 300, :north]
+    process :resize_to_fill => [200, 250, :north]
   end
 
   version :gallery do

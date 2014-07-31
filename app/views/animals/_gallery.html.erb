@@ -1,0 +1,13 @@
+<% @animals.each do |animal| %>
+  <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+  	<% if animal.picture? %>
+      <a href="<%= animal_path(animal) %>" class="thumbnail">
+        <%= image_tag(animal.picture_url(:gallery), :alt => animal.name, :class =>"img-responsive") %>
+      </a>
+    <% else %>
+      <a href="<%= animal_path(animal) %>">
+        <img src="http://placehold.it/300x200&text=<%= animal.name %>" class="img-responsive img-thumbnail">
+      </a>
+    <% end %>
+  </div>
+<% end %>

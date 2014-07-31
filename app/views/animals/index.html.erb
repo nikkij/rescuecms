@@ -4,30 +4,12 @@
     <div class="col-md-12">
       
       <div class="page-header">
-        <h1>We have 3 animals</h1>
+        <h1>We have <%= @animals.count %> animals</h1>
       </div>
 
-      <ul class="media-list">
-      <!-- BEGIN List of adobtables -->
-      <% @animals.each do |animal| %>
-        <li class="media">
-          <a class="pull-left" href="#">
-            <%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %>
-          </a>
-          <div class="media-body">
-            <h4 class="media-heading"><%= animal.name %></h4>
-            <p>Description</p>
-            <p>
-                <strong>Sex:</strong><%= animal.animal_sex.name if animal.animal_sex %>
-                <strong>Size:</strong><%= animal.animal_size.name if animal.animal_size %>
-                <strong>Breed:</strong><%= animal.animal_breed.name if animal.animal_breed %>
-                <strong>Location:</strong><%= animal.location.name if animal.location %>
-            </p>
-            <a href="<%= animal_path(animal) %>">Find out more about <%= animal.name %></a>
-          </div>
-        </li>
-      <% end %>
-      </ul> 
+     <!-- BEGIN List of adobtables -->
+     <%= render 'animals/gallery' %>
+     <!-- END List of adoptables -->
            
     </div>
 

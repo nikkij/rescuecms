@@ -4,7 +4,7 @@
     <p id="alert"><%= flash[:alert] %></p>
   </div>
  <div class="form-box" id="login-box">
-     <div class="header">Sign In to RescueCMS</div>
+     <div class="header">Sign In to RescueServe</div>
      <%= form_for :sessions, :url => admin_sessions_path, :html => {:role => 'form'} do |f| %> 
          <div class="body bg-gray">
              <div class="form-group">
@@ -15,9 +15,9 @@
                  <!--<input type="password" name="password" class="form-control" placeholder="Password"/>-->
                  <%= f.password_field :password, :class => 'form-control', :placeholder => 'Password' %>
              </div>          
-             <div class="form-group">
+             <!--<div class="form-group">
                  <input type="checkbox" name="remember_me"/> Remember me
-             </div>
+             </div>-->
          </div>
          <div class="footer">                                                               
              <!--<button type="submit" class="btn bg-olive btn-block">Sign me in</button>-->

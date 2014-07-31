@@ -1,34 +1,56 @@
 <%- model_class = Animal -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+
+<div class="row">
+  <div class="col-lg-3 col-md-3" style="padding-top:25px;">
+    <% if @animal.picture? %> 
+      <%= image_tag(@animal.picture_url(:standard), :alt => @animal.name, :class=>'img-animal-profile') %>
+    <% else %>
+      <img src="http://placehold.it/200x250&text=<%= @animal.name %>">
+    <% end %>
+  </div>   
+
+  <div class="col-lg-9 col-md-9">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><%= @animal.name %> </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= @animal.sex %>
+      </div>
+      <div class="col-md-2">
+        <%= @animal.size %>
+      </div>
+      <div class="col-md-8">
+        <%= @animal.breed %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p>Who wouldn't want such a sweetie? Check out all <%= @animal.name %>'s moves. Visit us today!
+        </p>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="col-md-12">
+        <h3>Do you want to give this animal a home?</h3>
+        <p>
+          Call us or contact us via email if you're interested. We can schedule a visit.
+        </p>
+        <p>
+          A small adoption fee is charged for each animal. All animals are spayed or nuetred as part of this fee.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @animal.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>
-  <dd><%= @animal.code %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:short_code) %>:</strong></dt>
-  <dd><%= @animal.short_code %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:litter) %>:</strong></dt>
-  <dd><%= @animal.litter %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:animal_sex_id) %>:</strong></dt>
-  <dd><%= @animal.animal_sex_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:animal_type_id) %>:</strong></dt>
-  <dd><%= @animal.animal_type_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:animal_color_id) %>:</strong></dt>
-  <dd><%= @animal.animal_color_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:animal_coat_type_id) %>:</strong></dt>
-  <dd><%= @animal.animal_coat_type_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:animal_size_id) %>:</strong></dt>
-  <dd><%= @animal.animal_size_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:animal_species_id) %>:</strong></dt>
-  <dd><%= @animal.animal_species_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:animal_breed_id) %>:</strong></dt>
-  <dd><%= @animal.animal_breed_id %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              animals_path, :class => 'btn'  %>
+<div class="row">
+  <div class="col-lg-12">
+    <h3>Take a look at some of our other animals</h3>
+  </div>
+  <!-- BEGIN List of adobtables -->
+  <%= render 'animals/gallery' %>
+  <!-- END List of adoptables -->
 </div>

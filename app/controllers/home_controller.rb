@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @animals = Animal.all
+    @animals = Animal.adoptable.take 12
   end
 end

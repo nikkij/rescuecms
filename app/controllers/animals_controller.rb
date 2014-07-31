@@ -10,6 +10,7 @@ class AnimalsController < ApplicationController
   # GET /animals/1
   # GET /animals/1.json
   def show
+    @animals = Animal.adoptable.take 6
   end
 
   private
