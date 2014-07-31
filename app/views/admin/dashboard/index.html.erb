@@ -9,14 +9,20 @@
                     <div class="small-box bg-gray">
                         <div class="inner">
                             <p>
+                                <% if animal.picture? %>
                                 <a href="<%= admin_animal_path(animal) %>">
-                                	<%= image_tag(animal.picture_url(:card), :alt => animal.name) %>
+                                	<%= image_tag(animal.picture_url(:card), :alt => animal.name, :class=>'img-responsive') %>
                                 </a>
+                               <% else %>
+                                 <a href="<%= animal_path(animal) %>">
+                                   <img src="http://placehold.it/210x210&text=<%= animal.name %>" class="img-responsive img-thumbnail">
+                                 </a>
+                               <% end %>
                             </p>
-                        </div>
-                        <a href="<%= admin_animal_path(animal) %>" class="small-box-footer">
-                          <%= animal.name %>
-                        </a>
+                        </div>                       
+                          <a href="<%= admin_animal_path(animal) %>" class="small-box-footer">
+                            <%= animal.name %>
+                          </a>
                     </div>
                 </div><!-- ./col -->            	    
             	<% end %>
