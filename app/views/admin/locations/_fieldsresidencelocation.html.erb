@@ -1,4 +1,3 @@
 <%= fields_for :residence_location, @residencelocation do |rlf| %>  
- Residence location fields go here
  <%= render :partial => '/admin/addresses/fields', object: @address, :locals => {:f => rlf} %>
 <% end %>
