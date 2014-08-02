@@ -1,27 +1,39 @@
-  <%= form_for @animal, :url => {:action => 'update_location'}, :html => { :class => 'form-horizontal' } do |f| %>  
-<div class="col-lg-6 col-md-6"> 
-    <h5>From <small>Current Location</small></h5>
-    <p><%= @animal.location.description %></p>  
-</div>
-<div class="col-lg-6 col-md-6"> 
-    <h5>To <small>New Location</small></h5>
-    <%= render :partial => '/admin/locations/fields', object: @animal.location %>
-    <!-- Location Details -->
-    <div id="residence_location_fields" style="display:none;">
-        <% @residencelocation = ResidenceLocation.new %>
-        <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
+<%= form_for @animal, :url => {:action => 'update_location'}, :html => { :class => 'form-horizontal' } do |f| %>  
+<div class="col-lg-5 col-md-5"> 
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">From</h3>
     </div>
-    <div id="on_premises_location_fields" style="display:none;">
-      <h2>On Premises</h2>
-      <% @onpremiseslocation = OnPremisesLocation.new %>
-      <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
-    </div>  
-
+    <div class="box-body">
+      <p><%= @animal.location.description %></p>
+    </div>
+  </div>  
+</div>
+<div class="col-lg-7 col-md-7"> 
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">To</h3>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <%= render :partial => '/admin/locations/fields', object: @animal.location %>
+      </div>
+      <!-- Location Details -->
+      <div id="on_premises_location_fields" style="display:none;">
+        <% @onpremiseslocation = OnPremisesLocation.new %>
+        <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
+      </div>
+      <div id="residence_location_fields" style="display:none;">
+          <% @residencelocation = ResidenceLocation.new %>
+          <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
+      </div>
+    </div> 
+  </div>
 </div>
 
     <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit "Move", :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   admin_animals_path, :class => 'btn' %>
     </div>  
-  <% end %>
+<% end %>

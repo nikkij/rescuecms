@@ -107,30 +107,34 @@
 
       <div class="row">
         <div class="col-md-12">
-          <div class="form-group">
             <% if @animal.location then @location = @animal.location %>
 
             <% else @location = Location.new %>
+
+              <label>Location</label>
+            <div class="row">
               <%= render :partial => '/admin/locations/fields', object: @location %>
+            </div>
               <!-- Location Details -->
+              <div id="on_premises_location_fields">
+                <% @onpremiseslocation = OnPremisesLocation.new %>
+                <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
+               </div>
               <div id="residence_location_fields" style="display:none;">
                 <% @residencelocation = ResidenceLocation.new %>
                 <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
               </div>
-              <div id="on_premises_location_fields" style="display:none;">
-                <% @onpremiseslocation = OnPremisesLocation.new %>
-                <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
-               </div>
             <% end %>
-          </div>
         </div>
       </div>
+    </div>
 
-
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  admin_animals_path, :class => 'btn' %>
+    <div class="box-footer clearfix">
+      <div class="form-actions">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    admin_animals_path, :class => 'btn' %>
+      </div>
     </div>
   <% end %>
-</div> <!-- END BOX BODY -->
+</div> <!-- END BOX  -->
