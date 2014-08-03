@@ -30,7 +30,7 @@ class Animal < ActiveRecord::Base
   validates :code, presence: true
   validates :status, presence: true
   validates :type, presence: true
-  validates :location_id, presence: true
+  validates :location_id, presence: true, :on => :create
 
   scope :adoptable, ->() {
     joins(:animal_status).where('animal_statuses.name' => "Adoptable") 

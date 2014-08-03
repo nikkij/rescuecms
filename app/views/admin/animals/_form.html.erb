@@ -151,8 +151,8 @@
                 <% @residencelocation = ResidenceLocation.new %>
                 <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
               </div>
+              <input type="hidden" id="location_id" name="animal[location_id]">
             <% end %>
-            <input type="hidden" id="location_id" name="animal[location_id]">
         </div>
       </div>
     </div>
