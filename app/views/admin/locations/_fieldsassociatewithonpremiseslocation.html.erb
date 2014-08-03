@@ -2,7 +2,13 @@
   <div class="control-group">
     <%= oplf.label :on_premises_location_area, 'Area', :class => 'control-label' %>
     <div class="controls">
-      <%= collection_select :on_premises_location, :id, OnPremisesLocation.all, :id, :description %>
+    <select id='on_premises_select' name="animal[location_id]">
+    	<% OnPremisesLocation.all.each do |on_premises_location| %>
+    	  <option value=<%= on_premises_location.location.id %>>
+    	  	<%= on_premises_location.description %>
+    	  </option>
+    	<% end %>
+    </select>
     </div>
   </div>
 <% end %>

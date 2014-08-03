@@ -20,15 +20,22 @@ class Animal < ActiveRecord::Base
   delegate :size, :to => :animal_size, :allow_nil => true
   delegate :species, :to => :animal_species, :allow_nil => true
   delegate :breed, :to => :animal_breed, :allow_nil => true
-  delegate :status, :to => :animal_status
+  delegate :status, :to => :animal_status, :allow_nil => true
 
   has_paper_trail
 
   mount_uploader :picture, PictureUploader
 
+
+  validates :code, presence: true
+  validates :status, presence: true
+  validates :type, presence: true
+  validates :location_id, presence: true
+
   scope :adoptable, ->() {
     joins(:animal_status).where('animal_statuses.name' => "Adoptable") 
   }
+
 
   def self.search(search)
     if search
@@ -38,5 +45,8 @@ class Animal < ActiveRecord::Base
     end
   end
 
+  # def location_has_been_selected
+  #   self.errors.add(:location_id,"must be valid. If you can't find the location, please create a new one")
+  # end
 
 end

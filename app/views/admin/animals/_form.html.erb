@@ -19,20 +19,34 @@
 
       <div class="row">
         <div class="col-md-6">
-          <%= f.label :code %>
+          <label for="animal_code">
+            Code 
+            <% if @animal.errors[:code].present? %>
+              <span class="form-error"><%= @animal.errors[:code][0] %></span>
+            <% else %>
+              <span class="required-label">REQUIRED</span>
+            <% end %> 
+          </label> 
           <div class="row">
             <div class="col-xs-6">
               <%= f.text_field :code, :class => 'form-control' %>
             </div>
             <div class="col-xs-6">
-              <%= f.text_field :short_code, :class => 'form-control' %>
+              <%= f.text_field :short_code, :value => @animal.code.to_s.last(4) ,:class => 'form-control' %>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.label :animal_status_id, 'Status' %>
-            <%= collection_select :animal, :animal_status_id, AnimalStatus.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
+              <label for="animal_status">
+                Status 
+                <% if @animal.errors[:status].present? %>
+                  <span class="form-error"><%= @animal.errors[:status][0] %></span>
+                <% else %>
+                  <span class="required-label">REQUIRED</span>
+                <% end %> 
+              </label>           
+            <%= f.collection_select :animal_status_id, AnimalStatus.all, :id, :name, {:include_blank => ''}, {:class => 'form-control', :id =>'status'} %>
           </div>
         </div>
       </div>
@@ -46,8 +60,15 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.label :litter %>
-            <%= f.text_field :litter, :class => 'form-control' %>
+            <label for="animal_type">
+              Type 
+              <% if @animal.errors[:type].present? %>
+                <span class="form-error"><%= @animal.errors[:type][0] %></span>
+              <% else %>
+                <span class="required-label">REQUIRED</span>
+              <% end %> 
+            </label> 
+            <%= collection_select :animal, :animal_type_id, AnimalType.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
           </div>
         </div>
       </div>
@@ -55,8 +76,8 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.label :animal_type_id, 'Type' %>
-            <%= collection_select :animal, :animal_type_id, AnimalType.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
+            <%= f.label :litter %>
+            <%= f.text_field :litter, :class => 'form-control' %>
           </div>
         </div>
         <div class="col-md-6">
@@ -110,8 +131,14 @@
             <% if @animal.location then @location = @animal.location %>
 
             <% else @location = Location.new %>
-
-              <label>Location</label>
+            <label for="animal_status">
+              Location 
+              <% if @animal.errors[:location_id].present? %>
+                <span class="form-error"><%= @animal.errors[:location_id][0] %></span>
+              <% else %>
+                <span class="required-label">REQUIRED</span>
+              <% end %> 
+            </label> 
             <div class="row">
               <%= render :partial => '/admin/locations/fields', object: @location %>
             </div>
@@ -125,6 +152,7 @@
                 <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
               </div>
             <% end %>
+            <input type="hidden" id="location_id" name="animal[location_id]">
         </div>
       </div>
     </div>

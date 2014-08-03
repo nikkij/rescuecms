@@ -1,4 +1,15 @@
 <%- model_class = Animal -%>
+<% if @animal.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <b><%= pluralize(@animal.errors.count, "error") %></b> prohibited this animal from being saved:
+      <ul>
+      <% @animal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+  </div>
+<% end %>
 <div class="col-md-12">
   <%= render :partial => 'form' %>
 </div>

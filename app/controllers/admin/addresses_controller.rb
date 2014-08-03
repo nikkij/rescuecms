@@ -63,13 +63,15 @@ class Admin::AddressesController < AdminController
   end
 
   # GET /addresses/autocomplete
+  # Take out the join and move to residence controller when we set up inherited controllers like we should
   def autocomplete
-    @addresses = Address.order(:street).where("street ILIKE ?", "%#{params[:term]}%")
+    @addresses = Address.joins('LEFT OUTER JOIN residence_locations ON addresses.addressable_id = residence_locations.id').where("street ILIKE ?", "%#{params[:term]}%").order(:street)
     respond_to do |format|
       format.html
       format.json { 
         #render json: @addresses.map(&:street)
-        render json: @addresses.map{ |a| { :label => a[:street], :value => a[:id] } }.to_json
+        #render json: @addresses.map{ |a| { :label => a[:street], :value => a[:id] } }.to_json
+        render json: @addresses.map{ |a| { :label => a[:street], :value => ResidenceLocation.find(a[:addressable_id]).location.id.to_s } }.to_json
       }
     end
   end

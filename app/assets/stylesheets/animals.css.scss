@@ -2,3 +2,15 @@
 	border: 1px solid #cbccc1;
 	padding: 10px;
 }
+
+.required-label {
+	background: #484848;
+	color: white;
+	font-size: .6em;
+	padding: 2px;
+}
+
+.form-error {
+	font-size: 1em;
+	color:red;
+}

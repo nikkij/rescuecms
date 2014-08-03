@@ -57,13 +57,18 @@ $('.location_type_radio').click(function(event) {
     });
 });
 
+$('#on_premises_select').change(function(event) {
+  selectedVal = $(this).find("option:selected").val()
+  $('#location_id').val(selectedVal);
+});
+
 // Autocomplete for addresses
 $( "#query_residence_location" ).autocomplete({
   source: '/admin/addresses/autocomplete.json',
   select: function(event,ui) {
     event.preventDefault();
     $(this).val(ui.item.label);
-    $('#residence_location_id').val(ui.item.value);
+    $('#location_id').val(ui.item.value);
   }
 });
 

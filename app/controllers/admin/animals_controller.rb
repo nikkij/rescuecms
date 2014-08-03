@@ -6,7 +6,6 @@ class Admin::AnimalsController < AdminController
   # GET /animals
   # GET /animals.json
   def index
-    #@animals = Animal.all
     @animals = Animal.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10)
     #@animals = Animal.order(params[:sort]).paginate(:page => params[:page], :per_page => 10)
   end
@@ -19,6 +18,7 @@ class Admin::AnimalsController < AdminController
 # GET /animals/new
   def new
     @animal = Animal.new
+    @animal.code = DateTime.now.to_i
   end
 
   # GET /animals/1/edit
@@ -29,13 +29,15 @@ class Admin::AnimalsController < AdminController
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
-    if  params[:location][:as_location_type] then
-      location_type = params[:location][:as_location_type]
-      strong_params_method_to_call = location_type+'_params'
-      @animal.location = location_type.classify.constantize.find(params[location_type][:id]).location
-    else
-      raise "Unknown location"
-    end
+    # if params[:location][:as_location_type]
+      # location_type = params[:location][:as_location_type]
+      # strong_params_method_to_call = location_type+'_params'
+      # if !params[location_type][:id].blank?
+        # @animal.location = location_type.classify.constantize.find(params[location_type][:id]).location
+      # else
+      # 
+      # end
+    # end
 
     respond_to do |format|
       if @animal.save
@@ -70,11 +72,10 @@ class Admin::AnimalsController < AdminController
 
   # PATCH/PUT /animals/1
   # PATCH/PUT /animals/1.json
+  # Merge this back in with the regular update
   def update_location
     respond_to do |format|
-      location_type = params[:location][:as_location_type]
-      @location = location_type.classify.constantize.find(params[location_type][:id]).location
-      if @animal.update_attributes(:location=>@location)
+      if @animal.update(animal_params)
         format.html { redirect_to [:admin, @animal], notice: 'Animal was successfully moved.' }
         format.json { render :show, status: :ok, location: @animal }
       else
@@ -104,7 +105,11 @@ class Admin::AnimalsController < AdminController
     def animal_params
       params.require(:animal).permit(:name,:picture_cache, :picture, :code, :short_code, :litter,
               :animal_sex_id, :animal_type_id, :animal_color_id, :animal_coat_type_id, :animal_size_id,
-              :animal_species_id, :animal_breed_id, :animal_status_id)
+              :animal_species_id, :animal_breed_id, :animal_status_id, :location_id)
+    end
+
+    def location_params
+      params.require(:location).permit(:as_location_type,:as_location_id)
     end
 
     def on_premises_location_params
