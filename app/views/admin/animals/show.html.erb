@@ -72,15 +72,29 @@
 </div>
 
 <div class="col-lg-9 col-md-9">
-
-  <div class="box box-primary">
-    <div class="box-header">
-      <h3 class="box-title">Location</h3>
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Location</h3>
+      </div>
+      <div class="box-body">
+        <%= @animal.location.name %><br />
+        <%= @animal.location.description %>
+      </div>
     </div>
-    <div class="box-body">
-      <%= @animal.location.name %><br />
-      <%= @animal.location.description %>
-  </div>   
+
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Public Profile</h3>
+      </div>
+      <div class="box-body">
+        <strong>Story</strong><br/>
+        <% if @animal.story.blank? %>
+          This animal doesn't have a story yet. <%= link_to 'Give them one', edit_admin_animal_path(@animal) %> and increase their chances for adoption.
+        <% else %>
+          <%= @animal.story %>
+        <% end %>
+      </div>
+    </div>    
 
 
 </div>

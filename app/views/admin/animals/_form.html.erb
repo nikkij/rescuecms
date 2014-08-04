@@ -126,7 +126,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row bottom-buffer">
         <div class="col-md-12">
             <% if @animal.location then @location = @animal.location %>
 
@@ -143,18 +143,28 @@
               <%= render :partial => '/admin/locations/fields', object: @location %>
             </div>
               <!-- Location Details -->
-              <div id="on_premises_location_fields">
+            <div id="on_premises_location_fields">
                 <% @onpremiseslocation = OnPremisesLocation.new %>
                 <%= render :partial => '/admin/locations/fieldsassociatewithonpremiseslocation', object: @onpremiseslocation %>
-               </div>
-              <div id="residence_location_fields" style="display:none;">
+            </div>
+            <div id="residence_location_fields" style="display:none;">
                 <% @residencelocation = ResidenceLocation.new %>
                 <%= render :partial => '/admin/locations/fieldsassociatewithresidencelocation', object: @residencelocation %>
-              </div>
-              <input type="hidden" id="location_id" name="animal[location_id]">
+            </div>
+            <input type="hidden" id="location_id" name="animal[location_id]">
             <% end %>
+          </div>
         </div>
-      </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :story %>
+              <small>A short story about this animal's history and personality. Will show in animal's public profile.</small>
+              <%= f.text_area :story, :class => 'form-control' %>
+            </div>
+          </div>
+        </div>
     </div>
 
     <div class="box-footer clearfix">

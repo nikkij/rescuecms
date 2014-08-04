@@ -31,6 +31,7 @@ class Animal < ActiveRecord::Base
   validates :status, presence: true
   validates :type, presence: true
   validates :location_id, presence: true, :on => :create
+  validates_length_of :story, :maximum => 500
 
   scope :adoptable, ->() {
     joins(:animal_status).where('animal_statuses.name' => "Adoptable") 
@@ -44,9 +45,5 @@ class Animal < ActiveRecord::Base
       where(nil)
     end
   end
-
-  # def location_has_been_selected
-  #   self.errors.add(:location_id,"must be valid. If you can't find the location, please create a new one")
-  # end
 
 end

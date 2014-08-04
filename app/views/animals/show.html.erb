@@ -28,7 +28,12 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <p>Who wouldn't want such a sweetie? Check out all <%= @animal.name %>'s moves. Visit us today!
+        <p>
+          <% if @animal.story.blank? %>
+            Who wouldn't want such a sweetie? Come by and visit <%= @animal.name %> today!
+          <% else %>
+            <%= @animal.story %>
+          <% end %>
         </p>
       </div>
     </div>

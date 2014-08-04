@@ -652,18 +652,18 @@ on_premises_locations = OnPremisesLocation.create([
 	{area:'Cat Quarentine',unit:'2'}])
 
 animals = Animal.create([
-	{name:'Jasper',location_id:1,animal_status_id:1},
-	{name:'Guinness',location_id:2,animal_status_id:3},
-	{name:'Gizmo',animal_sex_id:1,animal_status_id:3,animal_type_id:1,location_id:2,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1403932823/dwg9kpfduoltqcm1ni3w.jpg'},
-	{name:'Jesse',location_id:15,animal_status_id:3,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1406096720/cp8wdzfoluodl087dg9a.jpg'},
-	{name:'Pip',location_id:3,animal_status_id:3,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1403918766/nybuvyrogb64kaaffeuh.jpg'},
-  {name:'Dakota',location_id:4,animal_status_id:3,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/c_thumb,g_face,h_100,w_150/v1406106211/bosjx0zaqytt9w6kd0mq.jpg'},
-  {name:'Edgar',location_id:5,animal_status_id:2},
-  {name:'Muffin',location_id:6,animal_status_id:2},
-  {name:'Zippy',location_id:7,animal_status_id:2},
-  {name:'Charlie',location_id:8,animal_status_id:2},
-  {name:'Marshmellow',location_id:9,animal_status_id:2},
-  {name:'Blue',location_id:10,animal_status_id:2}
+	{name:'Jasper',location_id:1,animal_status_id:1,animal_type_id:1,code:1111},
+	{name:'Guinness',location_id:2,animal_status_id:3,animal_type_id:1,code:1111},
+	{name:'Gizmo',location_id:2,animal_sex_id:1,animal_status_id:3,animal_type_id:1,code:1111,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1403932823/dwg9kpfduoltqcm1ni3w.jpg'},
+	{name:'Jesse',location_id:15,animal_status_id:3,animal_type_id:1,code:1111,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1406096720/cp8wdzfoluodl087dg9a.jpg'},
+	{name:'Pip',location_id:3,animal_status_id:3,animal_type_id:1,code:1111,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/t_media_lib_thumb/v1403918766/nybuvyrogb64kaaffeuh.jpg'},
+  {name:'Dakota',location_id:4,animal_status_id:3,animal_type_id:1,code:1111,remote_picture_url:'http://res.cloudinary.com/hwtphffjr/image/upload/c_thumb,g_face,h_100,w_150/v1406106211/bosjx0zaqytt9w6kd0mq.jpg'},
+  {name:'Edgar',location_id:5,animal_status_id:2,animal_type_id:1,code:1111},
+  {name:'Muffin',location_id:6,animal_status_id:2,animal_type_id:1,code:1111},
+  {name:'Zippy',location_id:7,animal_status_id:2,animal_type_id:1,code:1111},
+  {name:'Charlie',location_id:8,animal_status_id:2,animal_type_id:1,code:1111},
+  {name:'Marshmellow',location_id:9,animal_status_id:2,animal_type_id:1,code:1111},
+  {name:'Blue',location_id:10,animal_status_id:2,animal_type_id:1,code:1111}
 ])
 
 users = User.create([
