@@ -5,7 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+puts '******************************************************'
+puts 'BEGIN SEEDING DATABASE'
+puts '******************************************************'
 State.create([
   {name: "Alabama", abbreviation: "AL"},
   {name: "Alaska",abbreviation: "AK"},
@@ -682,3 +684,10 @@ Animal.find(9).create_activity :create, owner: User.find(1)
 Animal.find(10).create_activity :create, owner: User.find(1)
 Animal.find(11).create_activity :create, owner: User.find(1)
 Animal.find(12).create_activity :create, owner: User.find(1)
+
+
+puts '******************************************************'
+puts 'END SEEDING DATABASE'
+puts 'Animal was created? ' + Animal.find(1).name
+puts 'Animal types were created?' + AnimalType.find(1).name
+puts '******************************************************'
