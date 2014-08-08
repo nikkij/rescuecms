@@ -1,22 +1,23 @@
-== RescueCMS
+## RescueServe
 
-RescueCMS is not a general content management system. It aims to be a turn key management system for anyone involved in animal rescue. The goal is to create a management system that encompasses the day to day operations of the rescue of animals. This could be anything from a single individual who runs a foster to a loose group of people in a neighborhood that network to rescue animals or a shelter or humane society.
+RescueServe is not a general content management system. It aims to be a turn key management system for anyone involved in animal rescue. The goal is to create a management system that encompasses the day to day operations of rescuing animals. This could be anything from a single individual who runs a foster to a loose group of people in a neighborhood that network to rescue animals or a shelter or humane society.
 
-Things you can do with RescueCMS:
+You can see a demo at: http://stormy-wave-7796.herokuapp.com/
+Username: demo@demo.com
+Password: demo
 
-* Track animals in your care through the entire rescue lifecycle
+Things you can do with RescueServe:
 
-* Keep a history ( behavior, health, ownership, foster ) from entry to exit to promote successful adoptions
+* Track animals in your care
 
-* View reports to answer common questions and evaluate performance of your organization
+* Add new residence and shelter locations. Move animals between locations.
 
-* Configure animal properties, locations, and more
+* View activity of the organization
+
+* Configure animal properties
 
 * Integrate with a front end website out of the box
 
-* Share what you do through Facebook, Twitter, Pinterest
 
-* Help your animals find their forever home through existing networks such as Petfinder
-
-== License
-RescueCMS is released under the MIT License
+## License
+RescueServe is released under the MIT License
