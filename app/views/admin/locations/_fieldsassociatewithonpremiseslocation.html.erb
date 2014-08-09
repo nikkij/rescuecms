@@ -1,6 +1,6 @@
 <%= fields_for :on_premises_location, @onpremiseslocation do |oplf| %>  
   <div class="control-group">
-    <%= oplf.label :on_premises_location_area, 'Area', :class => 'control-label' %>
+    <% oplf.label :on_premises_location_area, 'Area', :class => 'control-label' %>
     <div class="controls">
     <select id='on_premises_select' name="animal[location_id]">
     	<% OnPremisesLocation.all.each do |on_premises_location| %>

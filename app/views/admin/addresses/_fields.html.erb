@@ -1,23 +1,31 @@
- <%= f.fields_for :address, @address do |ff| %>
+ <%= f.fields_for :address, address do |ff| %>
  <div class="row">
    <div class="col-md-6 col-lg-6">
-     <%= ff.label :street %>
+     <label>Street
+       <%= label_with_inline_error(address, :street) %>
+     </label>
      <%= ff.text_field :street, :class => 'form-control' %>
    </div>
  </div>
  <div class="row">
    <div class="col-md-6 col-lg-6">
-     <%= ff.label :city %>
+     <label>City
+       <%= label_with_inline_error(address, :city) %>
+     </label>
      <%= ff.text_field :city, :class => 'form-control' %>
    </div>
  </div>
  <div class="row">
    <div class="col-md-4 col-lg-4">
-     <%= ff.label :state %>
+     <label>State
+       <%= label_with_inline_error(address, :state) %>
+     </label>
      <%= ff.collection_select :state_id, State.all, :id, :name, {:include_blank => ''}, {:class => 'form-control'} %>
    </div>
    <div class="col-md-2 col-lg-2">
-     <%= ff.label :zip_code %>
+     <label>Zip Code
+       <%= label_with_inline_error(address, :zip_code) %>
+     </label>
      <%= ff.text_field :zip_code, :class => 'form-control' %>
   </div>
   <div class="col-md-6 col-lg-6">&nbsp;</div>

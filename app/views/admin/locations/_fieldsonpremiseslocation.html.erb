@@ -1,7 +1,14 @@
 <%= fields_for :on_premises_location, @onpremiseslocation do |oplf| %>
   <div class="row">
     <div class="col-md-12 col-lg-12">
-      <%= oplf.label :area %>
+      <label for="animal_code">
+        Area
+        <% if @location.errors[:area].present? %>
+          <span class="form-error"><%= @location.errors[:area][0] %></span>
+        <% else %>
+          <span class="required-label">REQUIRED</span>
+        <% end %> 
+      </label> 
       <%= oplf.text_field :area, :class => 'form-control' %>
     </div>
     <div class="col-md-12 col-lg-12">

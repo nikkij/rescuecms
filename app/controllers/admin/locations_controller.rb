@@ -19,7 +19,11 @@ class Admin::LocationsController < AdminController
   # GET /locations/new
   def new
     @location = Location.new
-    @address = Address.new #this is only needed for residence locations though, surely there is a better way to do this?
+    @address = Address.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @topic }
+    end
   end
 
   # GET /locations/1/edit
@@ -35,8 +39,10 @@ class Admin::LocationsController < AdminController
     strong_params_method_to_call = location_type+'_params'
     @location = location_type.classify.constantize.new(self.send(strong_params_method_to_call.to_sym))
     respond_to do |format|
+    puts '**************** Is the location valid? ' + @location.valid?.to_s
+    puts 'location obj: '+@location.to_yaml
       if @location.save
-        format.html { redirect_to [:admin,Location.new], notice: 'Location was successfully created.' }
+        format.html { redirect_to [:admin,@location], notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
       else
         format.html { render :new }
