@@ -106,23 +106,14 @@
                                 Activity Stream
                             </h3>
                         </div>
-                        <div class="box-body no-padding">
-                            <div class="table-responsive">
-                                <!-- .table -->
-                                <table class="table table-striped">
-                                    <tr>
-                                        <td>
-                                          
-                                        <% @activities.each do |activity| %>
-                                          <div class="activity">
-                                            <%= render_activity activity %>
-                                          </div>
-                                        <% end %>
-
-                                        </td>
-                                    </tr>
-                                </table><!-- /.table -->
-                            </div>
+                        <div class="box-body">
+                          <ul class="media-list">                  
+                            <% @activities.each do |activity| %>
+                              <div class="activity">
+                                <%= render_activity activity %>
+                              </div>
+                            <% end %>
+                          </ul>
                         </div><!-- /.box-body-->
                         <div class="box-footer">
   

@@ -1,0 +1,13 @@
+<li class="media">
+  <% if activity.trackable && activity.trackable.picture? %>
+    <a class="pull-left" href="#">
+      <%= image_tag(activity.trackable.picture_url(:tinythumbnail), :alt => activity.trackable.name, :class => 'media-object') %>
+    </a>
+  <% end %>
+  <div class="media-body">
+      <span><%= time_ago_in_words(activity.created_at) %> ago</span>
+      <h5 class="media-heading">
+          <%= activity.owner.email %> removed an animal from the system
+      </h5>
+  </div>
+</li>

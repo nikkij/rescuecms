@@ -56,6 +56,7 @@ class Admin::AnimalsController < AdminController
   def update
     respond_to do |format|
       if @animal.update(animal_params)
+        @animal.create_activity :update, owner: current_user
         format.html { redirect_to [:admin, @animal], notice: 'Animal was successfully updated.' }
         format.json { render :show, status: :ok, location: @animal }
       else
@@ -76,6 +77,7 @@ class Admin::AnimalsController < AdminController
   def update_location
     respond_to do |format|
       if @animal.update(animal_params)
+        @animal.create_activity :move, owner: current_user
         format.html { redirect_to [:admin, @animal], notice: 'Animal was successfully moved.' }
         format.json { render :show, status: :ok, location: @animal }
       else
@@ -88,6 +90,7 @@ class Admin::AnimalsController < AdminController
   # DELETE /animals/1
   # DELETE /animals/1.json
   def destroy
+    @animal.create_activity :destroy, owner: current_user
     @animal.destroy
     respond_to do |format|
       format.html { redirect_to admin_animals_url, notice: 'Animal was successfully destroyed.' }
