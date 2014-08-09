@@ -19,6 +19,7 @@ class Admin::AnimalsController < AdminController
   def new
     @animal = Animal.new
     @animal.code = DateTime.now.to_i
+    @animal.name = @animal.code
   end
 
   # GET /animals/1/edit
