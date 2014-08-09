@@ -55,7 +55,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <%= f.label :name %>
-            <%= f.text_field :name, :class => 'form-control' %>
+            <%= f.text_field :name, :value => @animal.code.to_s, :class => 'form-control' %>
           </div>
         </div>
         <div class="col-md-6">

@@ -1,8 +1,4 @@
 // Locations
-//var ready;
-//ready = function() {
-
-  //alert('Document ready?');
 
 // Toggle detail fields on select radio location type
 // Should be able to rewrite this in a more generic manner for resuse when time permits. 
@@ -34,23 +30,17 @@
 // });
 
 $('.location_type_radio').click(function(event) {
-    //var ele = $(this).parents("li").first();
-    //alert('Checked residence radio!');
     function getEleLocationType(eleToParse) {
       var arr = eleToParse.attr('id').split('location_as_location_type_');
-      //alert('hide: ' + arr[1]);
       return arr[1];    
     }
     // Show the clicked element
     var eleToShow = getEleLocationType($(this));
-    /*$('#'+eleToShow+'_fields').show();*/
     $('#'+eleToShow+'_fields').slideDown();
 
     // Hide the rest
     $('.location_type_radio').each(function(index, obj){
-      //alert($(this).attr('id'));
       var ele = getEleLocationType($(this));
-      //alert('Current el:'+ele+'  eleToShow is:'+eleToShow);
       if (ele !== eleToShow) {
        $('#'+ele+'_fields').hide();
       }
@@ -71,8 +61,3 @@ $( "#query_residence_location" ).autocomplete({
     $('#location_id').val(ui.item.value);
   }
 });
-
-//} //end ready
-
-//$(document).ready(ready);
-//$(document).on('page:load',ready);

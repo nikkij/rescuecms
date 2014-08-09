@@ -39,8 +39,6 @@ class Admin::LocationsController < AdminController
     strong_params_method_to_call = location_type+'_params'
     @location = location_type.classify.constantize.new(self.send(strong_params_method_to_call.to_sym))
     respond_to do |format|
-    puts '**************** Is the location valid? ' + @location.valid?.to_s
-    puts 'location obj: '+@location.to_yaml
       if @location.save
         format.html { redirect_to [:admin,@location], notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
