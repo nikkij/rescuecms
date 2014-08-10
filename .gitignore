@@ -25,4 +25,4 @@ doc/
 .project
 .idea
 .secret
-/config/secrets.yml
+/config/local_secrets.yml
