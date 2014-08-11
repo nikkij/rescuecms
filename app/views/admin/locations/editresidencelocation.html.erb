@@ -5,7 +5,7 @@
     </div> 
     <%= form_for [:admin, @location], :html => { :role => 'form' }  do |f| %>
       <div class="box-body">
-        <%= render :partial => '/admin/addresses/fields', object: @location.address, :locals => {:f => f} %>
+        <%= render :partial => '/admin/addresses/fields', object: @location.address, :locals => {:address => @location.address, :f => f} %>
         <%= hidden_field :location,:as_location_type, :value => "residence_location" %>
       </div>
 
