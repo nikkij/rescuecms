@@ -40,6 +40,7 @@ class Admin::LocationsController < AdminController
     @location = location_type.classify.constantize.new(self.send(strong_params_method_to_call.to_sym))
     respond_to do |format|
       if @location.save
+        @location.create_activity :create, owner: current_user
         format.html { redirect_to [:admin,@location], notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
       else
@@ -56,6 +57,7 @@ class Admin::LocationsController < AdminController
     strong_params_method_to_call = location_type+'_params'  
     respond_to do |format|
       if @location.update(self.send(strong_params_method_to_call.to_sym))
+        @location.create_activity :update, owner: current_user
         format.html { redirect_to [:admin,@location], notice: 'Location was successfully updated.' }
         format.json { render :show, status: :ok, location: @location }
       else
