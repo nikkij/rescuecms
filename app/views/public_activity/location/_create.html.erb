@@ -1,0 +1,12 @@
+<li class="media">
+  <div class="media-body">
+    <span><%= time_ago_in_words(activity.created_at) %> ago</span>
+    <h5 class="media-heading">
+      <% if activity.trackable %>
+        the location <%= link_to activity.trackable.name, admin_location_path(activity.trackable) %> was entered by <%= link_to activity.owner.email, admin_user_path(activity.owner) if activity.owner %>
+      <% else %>
+        which has since been removed
+      <% end %>
+    </h5>
+  </div>
+</li>
