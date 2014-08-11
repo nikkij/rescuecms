@@ -1,7 +1,7 @@
 <%= fields_for :residence_location, @residencelocation do |rlf| %> 
  <% if @address.present? %> 
-   <% render :partial => '/admin/addresses/fields', :locals => {:address => @address, :f => rlf} %>
+   <%= render :partial => '/admin/addresses/fields', :locals => {:address => @address, :f => rlf} %>
  <% else %>
-   <% render :partial => '/admin/addresses/fields', :locals => {:address => @location.address, :f => rlf} %>
+   <%= render :partial => '/admin/addresses/fields', :locals => {:address => @location.address, :f => rlf} %>
  <% end %>
 <% end %>
