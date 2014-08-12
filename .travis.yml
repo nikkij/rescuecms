@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 2.0.0-p353
+env:
+  - SECRET_KEY_BASE="$(bundle exec rake secret)"  
 before_script:
   - psql -c 'create database rescueserve_test;' -U postgres; cp ./config/database.yml.travis ./config/database.yml
   - RAILS_ENV=test bundle exec rake db:migrate db:seed --trace
