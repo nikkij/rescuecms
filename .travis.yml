@@ -3,7 +3,7 @@ rvm:
   - 2.0.0-p353
 before_script:
   - psql -c 'create database rescueserve_test;' -U postgres; cp ./config/database.yml.travis ./config/database.yml
-  - RAILS_ENV=test rake db:migrate db:seed
+  - RAILS_ENV=test bundle exec rake db:migrate db:seed --trace
 script:
   - bundle exec rake
 gemfile:
