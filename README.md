@@ -1,6 +1,9 @@
+
+[![Build Status](https://travis-ci.org/nikkij/rescueserve.svg?branch=master)](https://travis-ci.org/nikkij/rescueserve)
+
 ## RescueServe
 
-RescueServe is not a general content management system. It aims to be a turn key management system for anyone involved in animal rescue. The goal is to create a management system that encompasses the day to day operations of rescuing animals. This could be anything from a single individual who runs a foster to a loose group of people in a neighborhood that network to rescue animals or a shelter or humane society.
+RescueServe is a management system for animal rescue organizations. The goal is to create a management system that encompasses the day to day operations of rescuing animals and provides a simple, integrated front end. This could be anything from a single individual who runs a foster to a loose group of people in a neighborhood that network to rescue animals or a shelter or humane society.
 
 You can see a demo at: http://stormy-wave-7796.herokuapp.com/
 Username: demo@demo.com
