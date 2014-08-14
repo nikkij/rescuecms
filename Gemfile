@@ -51,6 +51,9 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Seperate seed data
+gem 'seedbank'
+
 # Authentication
 gem 'sorcery'
 
