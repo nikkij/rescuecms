@@ -2,19 +2,8 @@
 <%= render :partial => 'admin/application/form_errors', locals: {object:@animal}  %>
 <div class="col-lg-12 col-md-12">
 
-  <div class="media">
-    <a class="pull-left" href="#">
-      <%= image_tag(@animal.picture_url(:thumbnail), :alt => @animal.name) %>
-    </a>
-    <div class="media-body">
-      <h4 class="media-heading"><%= @animal.name %></h4> 
-      <p>
-        <%= @animal.location.name %><br/>
-        <i class="fa fa-exchange"></i>&nbsp;<%= link_to 'Move', move_admin_animal_path(@animal), method: :get %>
-      </p>
-    </div>
-  </div>
+<%= render :partial => 'card' %>
 
-  <%= render :partial => 'form' %>
+<%= render :partial => 'form' %>
 
 </div>
