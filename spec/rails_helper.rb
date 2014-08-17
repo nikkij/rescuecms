@@ -27,19 +27,21 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   # Clean the database using database cleaner gem
-  # config.before(:suite) do
-  #   DatabaseCleaner.strategy = :truncation
-  #   DatabaseCleaner.clean_with(:truncation)
-  #   load "#{Rails.root}/db/seeds.rb"
-  # end
+  config.before(:suite) do
+    #DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
+    load "#{Rails.root}/db/seeds/lookup.seeds.rb"
+  end
 
-  # config.before(:each) do
-  #   DatabaseCleaner.start
-  # end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
 
-  # config.after(:each) do
-  #   DatabaseCleaner.clean
-  # end
+  config.after(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean
+    #load "#{Rails.root}/db/seeds/lookup.seeds.rb"
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -60,5 +62,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   # Sorcery auth helpers
-  config.include ::Sorcery::TestHelpers::Rails
+  #config.include ::Sorcery::TestHelpers::Rails
+  config.include Sorcery::TestHelpers::Rails::Controller
+
 end
