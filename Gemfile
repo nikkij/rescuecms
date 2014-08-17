@@ -34,7 +34,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'factory_girl_rails'
+  #gem 'factory_girl_rails' <- moved to load explicitly inside rails_spec because it screws up db:migrate by loading too soon if left here
   gem 'shoulda-matchers'
   gem 'database_cleaner'
 end
