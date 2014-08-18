@@ -4,7 +4,6 @@
  
   <div class="row">
     <div class="col-lg-3 col-md-3">
-      <h3 style="margin-top:5px;">All</h3>
     </div>
     <div class="col-lg-6 col-md-6">  
       <div class="form-group">                                   
@@ -28,50 +27,59 @@
     </div>
   </div>  
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>&nbsp;</th>
-        <th><%= sortable 'name' %></th>
-        <th>Code</th>
-        <th>Status</th>
-        <th>Sex</th>
-        <th>Species</th>
-        <th>Location</th>
-        <th>Created</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @animals.each do |animal| %>
+
+  <div class="box">
+    <div class="box-header">
+        <h3 class="box-title">All Animals</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body table-responsive">
+
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %></td>
-          <td><%= link_to animal.name, admin_animal_path(animal) %></td>
-          <td><%= animal.code unless animal.code.blank? %></td>
-          <td><%= animal.status unless animal.status.blank? %></td>
-          <td><%= animal.sex unless animal.sex.blank? %></td>
-          <td><%= animal.species unless animal.species.blank? %></td>
-          <td>
-            <% if animal.location %>
-              <%= link_to animal.location.name, "/admin/#{animal.location.as_location_type.underscore.pluralize}/#{animal.location.as_location_id.to_s}" %>
-            <% else %>
-              Unknown
-            <% end %>
-          </td>
-          <td><%= time_ago_in_words(animal.created_at) %> ago</td>
-          <td>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_admin_animal_path(animal), :class => 'btn btn-mini' %>
-          </td>
-          <td>
-            <%= link_to 'Move', move_admin_animal_path(animal), method: :get, :class => 'btn btn-mini' %>
-          </td>
+          <th>&nbsp;</th>
+          <th><%= sortable 'name' %></th>
+          <th>Code</th>
+          <th>Status</th>
+          <th>Sex</th>
+          <th>Species</th>
+          <th>Location</th>
+          <th>Created</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>  
+      </thead>
+      <tbody>
+        <% @animals.each do |animal| %>
+          <tr>
+            <td><%= image_tag(animal.picture_url(:thumbnail), :alt => animal.name) %></td>
+            <td><%= link_to animal.name, admin_animal_path(animal) %></td>
+            <td><%= animal.code unless animal.code.blank? %></td>
+            <td><%= animal.status unless animal.status.blank? %></td>
+            <td><%= animal.sex unless animal.sex.blank? %></td>
+            <td><%= animal.species unless animal.species.blank? %></td>
+            <td>
+              <% if animal.location %>
+                <%= link_to animal.location.name, "/admin/#{animal.location.as_location_type.underscore.pluralize}/#{animal.location.as_location_id.to_s}" %>
+              <% else %>
+                Unknown
+              <% end %>
+            </td>
+            <td><%= time_ago_in_words(animal.created_at) %> ago</td>
+            <td>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                          edit_admin_animal_path(animal), :class => 'btn btn-mini' %>
+            </td>
+            <td>
+              <%= link_to 'Move', move_admin_animal_path(animal), method: :get, :class => 'btn btn-mini' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>    
 
-  <%= will_paginate @animals, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate @animals, renderer: BootstrapPagination::Rails %> 
 
+    </div><!-- end box-body --> 
+  </div><!-- end box -->
 </div>
