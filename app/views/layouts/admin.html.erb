@@ -203,6 +203,19 @@ dashboard/AdminLTE.css
     </aside><!-- /.right-side -->
   </div><!-- ./wrapper -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+        <script type="text/javascript">
+                $("#animalTable").dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false,
+                    "aoColumnDefs": [{ "bSortable": false, "aTargets": [1,2,3,4,5,6]}],
+                    "sAjaxSource": $("#animalTable").data('source')
+                });
+        </script>
 <!-- JS NEEDED FOR ADMIN LTE 
 library/raphael-min.js", "data-turbolinks-track" => true %>
 dashboard/plugins/morris/morris.min.js

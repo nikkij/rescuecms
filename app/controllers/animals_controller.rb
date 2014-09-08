@@ -5,6 +5,10 @@ class AnimalsController < ApplicationController
   # GET /animals.json
   def index
     @animals = Animal.adoptable
+    respond_to do |format|
+      format.html
+      format.json { render json: AnimalsDatatable.new(view_context) }
+    end   
   end
 
   # GET /animals/1
